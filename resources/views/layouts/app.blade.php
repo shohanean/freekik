@@ -74,8 +74,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-lg-end p-3">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ asset('app_assets') }}/images/suzayet.jpg" class="rounded-circle" alt="suzayet"
-                                        style="width: 70px; height: 70px;">
+                                    <img src="{{ asset('app_assets') }}/images/suzayet.jpg" class="rounded-circle" alt="suzayet" style="width: 70px; height: 70px;">
                                     <div class="info_user ps-3">
                                         <a href="" class="text-secondary text-decoration-none">mdsuzayet377</a>
                                         <a href=""
