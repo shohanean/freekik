@@ -66,6 +66,23 @@
                             <a href="register.html" class="text-white me-4 text-decoration-none fw-semibold">Sign up</a>
                         </p>  -->
                         <a href="" class="text-white me-4"><i class="fa-regular fa-bell"></i></a>
+                        @guest
+                        <div class="btn-group">
+                            <button type="button" class="text-white border-0 bg-transparent dropdown-toggle"
+                                data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                <img src="{{ asset('app_assets') }}/images/suzayet.jpg" class="rounded-circle" alt=""
+                                    style="width: 30px; height: 30px;">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-lg-end p-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="info_user">
+                                        <a href="{{ route('register') }}" class="btn btn-primary fw-light mt-2">Register/Login</a>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                        @endguest
+                        @auth
                         <div class="btn-group">
                             <button type="button" class="text-white border-0 bg-transparent dropdown-toggle"
                                 data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -76,11 +93,9 @@
                                 <div class="d-flex align-items-center">
                                     <img src="{{ asset('app_assets') }}/images/suzayet.jpg" class="rounded-circle" alt="suzayet" style="width: 70px; height: 70px;">
                                     <div class="info_user ps-3">
-                                        <a href="" class="text-secondary text-decoration-none">mdsuzayet377</a>
-                                        <a href=""
-                                            class="text-secondary fw-light text-decoration-none">md.suzayet.377@gmail.com</a>
-                                        <button type="button" class="btn btn-primary fw-light mt-2">Edit
-                                            profile</button>
+                                        <a href="" class="text-secondary text-decoration-none">{{ auth()->user()->name }}</a>
+                                        <a href="" class="text-secondary fw-light text-decoration-none">{{ auth()->user()->email }}</a>
+                                        <a href="{{ route('profile.index') }}" class="btn btn-primary fw-light mt-2">Edit Profile</a>
                                     </div>
                                 </div>
                                 <hr>
@@ -121,6 +136,7 @@
                                 </li>
                             </ul>
                         </div>
+                        @endauth
                     </div>
                 </div>
             </div>
