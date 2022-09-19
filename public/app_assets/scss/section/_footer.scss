@@ -1,0 +1,14 @@
+footer {
+    position: relative;
+    z-index: 9;
+    .container {
+        .footer-social {
+            i {
+                width: 45px;
+                height: 45px;
+                line-height: 45px;
+                @include border-radius-50;
+            }
+        }
+    }
+}

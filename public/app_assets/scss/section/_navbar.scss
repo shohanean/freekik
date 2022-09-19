@@ -1,0 +1,39 @@
+
+#navbar {
+    // position: fixed;
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+    @include tranisition;
+    .container {
+        .navbar-collapse {
+            .navbar-nav {
+                .nav-item {
+                    @media (min-width: 1160px) { 
+                        padding: 0 21px;
+                    }
+                    .nav-link {
+                        font-weight: 400;
+                        @include tranisition;
+                        color: white;
+                        @include for-phone-only {
+                            padding: .4rem 0;
+                        }
+                        @include for-tablet-portrait-up {
+                            padding: .4rem 0;
+                        }
+                        @include for-desktop-up {
+                            padding: 0;
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+    }
+}
+.navbar-toggler:focus {
+	box-shadow: none;
+}

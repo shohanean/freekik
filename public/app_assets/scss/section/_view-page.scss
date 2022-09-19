@@ -1,0 +1,34 @@
+#view-page {
+    #related-item {
+        figure {
+            &:hover {
+                .item-overlay {
+                    height: 100%;
+                    display: block;
+                    top: 0;
+                }
+            }
+            .item-overlay {
+                top: -10px;
+                left: 0;
+                width: 100%;
+                height: 0%;
+                background-color: rgba(0, 0, 0, 0.2);
+                @include tranisition;
+                display: none;
+                .overlay-content {
+                    .overlay-social {
+                        i {
+                            width: 35px;
+                            height: 35px;
+                            line-height: 35px;
+                            @include border-radius-50;
+                        }
+                    }
+                }
+               
+            }
+        
+        }
+    }
+}

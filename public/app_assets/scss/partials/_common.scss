@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+body {
+    font-family: 'Poppins', sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+.web-shadow {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, .2), 0 10px 10px rgba(0, 0, 0, .2);
+}
+.btn-shadow {
+    padding: .5rem 1.3rem;
+    filter: drop-shadow(0.20rem 0.20rem 0.4rem rgba(0, 0, 0, 0.5));
+    -webkit-filter: drop-shadow(0.20rem 0.20rem 0.4rem rgba(0, 0, 0, 0.5));
+}
+.web-gardient {
+    background: linear-gradient(#7531FA, #4c92f6)
+}
+.web-text-color {
+    color: $primary-text-color;
+}
+.web-btn {
+    background-color: #2669ea;
+}
+.web-btn:hover {
+    background-color: #2669ea;
+}
+.web-bg {
+    background-color: $primary-text-color;
+}
+.web-text-color:hover {
+    color: $primary-text-color;
+}
+.web-gray {
+    color: gray;
+}
+.web-footer-color {
+    color: #869fb2;
+}
+.web-footer-color:hover {
+    color: white;
+}
+.web-text-black {
+    color: $web-black;
+}
+.web-keyword-btn {
+    border: 2px solid #2669ea;
+    color: #2669ea;
+}
+.web-keyword-btn:focus {
+    border: 2px solid #2669ea;
+    color: #fff;
+    background-color: #2669ea;
+}
+.web-keyword-btn:hover {
+    border: 2px solid #2669ea;
+    color: #fff;
+    background-color: #2669ea;
+}
+.serch-header-color {
+    color: #a5b7c6;
+    &:hover {
+        color: #fff;
+    }
+    &:focus {
+        color: #a5b7c6;
+    }
+}
+
+.category-btn {
+    border: 2px solid #a5b7c6;
+    color: $web_gray;
+    &:hover {
+        border: 2px solid #a5b7c6;
+        color: $web_gray;
+    }
+    &:focus {
+        border: 2px solid #2669ea;
+        color: white;
+        background-color: #2669ea;
+    }
+}
+
+.category-btn.active {
+    border: 2px solid #2669ea;
+    color: white;
+    background-color: #2669ea;
+}
+
+.bg-gray {
+    background-color: #E6E6E6;
+}
+.web-follow-btn {
+    background-color: #eff3f6;
+    border: #eff3f6;
+    color: #374957;
+    &:hover {
+        background-color: #eff3f6;
+        border: #eff3f6;
+        color: #374957;
+    }
+    &:focus {
+        color: white;
+        background-color: #2669ea;
+        border: #2669ea;
+    }
+}
+.view-keyword-btn {
+    font-size: 14px;
+    color: #5f7d95;
+    border: 2px solid #cfd9e0;
+    padding: 1px 10px;
+    &:hover, &:focus {
+        font-size: 14px;
+        color: #5f7d95;
+        border: 2px solid #cfd9e0;
+        padding: 1px 10px;
+    }
+}
+
+
+

@@ -1,0 +1,76 @@
+@mixin tranisition {
+    transition:  all linear .9s;
+    -webkit-transition:  all linear .9s;
+    -moz-transition:  all linear .9s;
+    -ms-transition:  all linear .9s;
+    -o-transition:  all linear .9s;
+}
+@mixin  border-radius-50 {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+@mixin transform-y-50 {
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+@mixin transform-translate-50 {
+        transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+}
+@mixin transform-y-25 {
+    transform: translateY(-25%);
+    -webkit-transform: translateY(-25%);
+    -moz-transform: translateY(-25%);
+    -ms-transform: translateY(-25%);
+    -o-transform: translateY(-25%);
+}
+@mixin transform-x-50 {
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+@mixin keyframes {
+    @keyframes slidein {
+        0% {
+            background-color: #bb2f62, ;
+        }
+        25% {
+            background-color: #6a4af4, ;
+        }
+        50% {
+            background-color:  #fe6f0a, ;
+        }
+        100% {
+            background-color:  #07cab2, ;
+        }
+      }
+  }
+@mixin  moving {
+    
+  @keyframes moving {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+     
+        transform: rotate(180deg);
+    }
+
+    100% { 
+        transform: rotate(360deg);
+        }
+    }
+    
+}

@@ -1,0 +1,16 @@
+#register {
+    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+        background-color: white;
+        color: $primary-text-color!important;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    .web-social-btn {
+        width: 49%;
+    }
+    .web-eye {
+        top: 50%;
+        @include transform-y-50;
+        right: 5%;
+        z-index: 99;
+    }
+}
