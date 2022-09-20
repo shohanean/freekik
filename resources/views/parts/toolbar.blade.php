@@ -40,7 +40,7 @@
                 <!--end::Title-->
             </div>
             <!--end::Page title-->
-            <!--begin::Actions-->
+            {{-- <!--begin::Actions-->
             <div class="d-flex align-items-center gap-2 gap-lg-3">
                 <!--begin::Filter menu-->
                 <div class="m-0">
@@ -138,7 +138,7 @@
                 <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Create</a>
                 <!--end::Primary button-->
             </div>
-            <!--end::Actions-->
+            <!--end::Actions--> --}}
         </div>
         <!--end::Container-->
     </div>
