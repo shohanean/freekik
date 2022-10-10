@@ -41,6 +41,9 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get('auth/facebook', [SocialController::class, 'facebookRedirect'])->name('auth.facebook');
 Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook'])->name('auth.facebook.callback');
 
+Route::get('auth/google', [SocialController::class, 'googleRedirect'])->name('auth.google');
+Route::get('auth/google/callback', [SocialController::class, 'loginWithGoogle'])->name('auth.google.callback');
+
 Route::middleware(['auth'])->group(function () {
     //Profile Routes
     Route::resource('profile', ProfileController::class);

@@ -61,15 +61,17 @@
             <div class="text-center text-muted text-uppercase fw-bolder mb-5">or</div>
             <!--end::Separator-->
             <!--begin::Google link-->
-            <a href="#" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
+            <a href="{{ route('auth.google') }}" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
                 <img alt="Logo" src="{{ asset('dashboard_assets') }}/media/svg/brand-logos/google-icon.svg" class="h-20px me-3" />Continue with Google
             </a>
             <!--end::Google link-->
-            <!--begin::Google link-->
+
+            {{-- <!--begin::Facebook link-->
             <a href="{{ route('auth.facebook') }}" class="btn btn-flex flex-center btn-light btn-lg w-100 mb-5">
                 <img alt="Logo" src="{{ asset('dashboard_assets') }}/media/svg/brand-logos/facebook-4.svg" class="h-20px me-3" />Continue with Facebook
             </a>
-            <!--end::Google link-->
+            <!--end::Facebook link--> --}}
+
         </div>
         <!--end::Actions-->
     </form>

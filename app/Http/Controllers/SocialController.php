@@ -4,17 +4,38 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Carbon\Carbon;
 use Validator;
 use Socialite;
 use Exception;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class SocialController extends Controller
 {
+    public function googleRedirect()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function loginWithGoogle()
+    {
+        $googleuser = Socialite::driver('google')->stateless()->user();
+        $user = User::updateOrCreate([
+            'email' => $googleuser->getEmail(),
+        ], [
+            'name' => $googleuser->getName(),
+            'email' => $googleuser->getEmail(),
+            'password' => 'google',
+            'email_verified_at' => Carbon::now()
+        ]);
+        Auth::login($user);
+        return redirect('/home');
+    }
+
     public function facebookRedirect()
     {
         return Socialite::driver('facebook')->redirect();
     }
+
     public function loginWithFacebook()
     {
         try {
