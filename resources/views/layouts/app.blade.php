@@ -38,20 +38,11 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                                aria-expanded="false">Categories</a>
+                                aria-expanded="false">More Categories</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="search-product.html">Vector</a></li>
                                 <li><a class="dropdown-item" href="#">Illustration</a></li>
                                 <li><a class="dropdown-item" href="search-product.html">Photos</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                                aria-expanded="false">More</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Vector</a></li>
-                                <li><a class="dropdown-item" href="#">Illustration</a></li>
-                                <li><a class="dropdown-item" href="#">Photos</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">

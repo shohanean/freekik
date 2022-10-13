@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('backend.category.index', [
-            'categories' => Category::all()
+            'categories' => Category::latest()->get()
         ]);
     }
 
@@ -39,8 +39,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->except('_token', 'featured') + [
+        $uploaded_path = $request->file('category_image')->storeAs(
+            'categories',
+            time()."-".$request->file('category_image')->hashName(),
+            's3'
+        );
+        Category::create($request->except('_token', 'featured', 'category_image') + [
             'slug' => Str::slug($request->name),
+            'category_image' => $uploaded_path,
             'added_by' => auth()->id(),
             'featured' => (isset($request->featured)) ? true:false
         ]);

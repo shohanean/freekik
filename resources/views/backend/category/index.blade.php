@@ -23,7 +23,7 @@ active
             <div class="card-header">
                 <!--begin::Card title-->
                 <div class="card-title">
-                    <h2>Store Template</h2>
+                    <h2>All Category List</h2>
                 </div>
                 <!--end::Card title-->
             </div>
@@ -34,6 +34,7 @@ active
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>sl</th>
                                 <th>name</th>
                                 <th>category_image</th>
                                 <th>featured</th>
@@ -43,8 +44,12 @@ active
                         <tbody>
                             @foreach ($categories as $category)
                                 <tr>
+                                    <td>asd</td>
                                     <td>{{ $category->name }}</td>
-                                    <td>{{ $category->category_image }}</td>
+                                    <td>
+                                        <img width="50" src="{{ Storage::disk('s3')->url($category->category_image) }}" alt="not found">
+                                    </td>
+                                    <td>{{ Storage::disk('s3')->url($category->category_image) }}</td>
                                     <td>{{ $category->featured }}</td>
                                     <td>{{ $category->added_by }}</td>
                                 </tr>
@@ -71,7 +76,7 @@ active
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <form action="{{ route('category.store') }}" method="POST">
+                <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
@@ -90,6 +95,7 @@ active
                     <div class="mb-4 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Category Image</label>
                         <input type="file" name="category_image" class="form-control mb-4">
+                        <small>240*150</small>
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->

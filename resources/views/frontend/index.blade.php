@@ -93,15 +93,11 @@
         </div>
         <div class="row m-auto text-center mt-4">
             <div class="col m-auto text-center">
-                <button type="button" class="btn text-white  px-3 py-1 rounded btn-sm mb-2"
-                    style="background-color: #5ea1ff;"><i
-                        class="fa-solid fa-magnifying-glass pe-2"></i>Mockup</button>
-                <button type="button" class="btn text-white  px-3 py-1 rounded btn-sm mb-2"
-                    style="background-color: #5ea1ff;"><i class="fa-solid fa-magnifying-glass pe-2"></i>Business
-                    card</button>
-                <button type="button" class="btn text-white  px-3 py-1 rounded btn-sm mb-2"
-                    style="background-color: #5ea1ff;"><i class="fa-solid fa-magnifying-glass pe-2"></i>3d logo
-                    mockup</button>
+                @foreach ($categories->take(3) as $category)
+                <button type="button" class="btn text-white  px-3 py-1 rounded btn-sm mb-2" style="background-color: #5ea1ff;">
+                    <i class="fa-solid fa-magnifying-glass pe-2"></i> {{ $category->name }}
+                </button>
+                @endforeach
             </div>
         </div>
         <!-- header image part start here -->
@@ -110,7 +106,8 @@
                 <div class="col mb-4">
                     <div class="header-img-hover">
                         <figure class="d-flex justify-content-center align-content-center mb-0">
-                            <img src="{{ asset('app_assets') }}/images/h-2.webp" class="mx-auto d-block rounded-2 p-1" alt="not found">
+                            {{-- <img src="{{ asset('app_assets') }}/images/h-2.webp" class="mx-auto d-block rounded-2 p-1" alt="not found"> --}}
+                            <img src="{{ Storage::disk('s3')->url($category->category_image) }}" class="mx-auto d-block rounded-2 p-1" alt="not found">
                         </figure>
                     </div>
                     <p class="text-center text-white p-2">{{ $category->name }}</p>

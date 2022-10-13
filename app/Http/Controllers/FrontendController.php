@@ -11,7 +11,7 @@ class FrontendController extends Controller
     public function index()
     {
         return view('frontend.index', [
-            'categories' => Category::where('featured', true)->get()
+            'categories' => Category::where('featured', true)->latest()->get()
         ]);
     }
 }

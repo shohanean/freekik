@@ -147,7 +147,7 @@
 									</div>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link" href="{{ route('index') }}" target="_black">
+									<a class="menu-link" href="{{ route('index') }}" target="_blank">
 										<span class="menu-icon">
                                             <i class="fa fa-globe"></i>
 										</span>
