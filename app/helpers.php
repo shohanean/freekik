@@ -2,6 +2,7 @@
 
 use App\Models\Profile;
 use App\Models\User;
+use App\Models\Category;
 
 function profile_compleation($id){
     $percentage = 10; // if anyone opens an account get 10 points
@@ -33,5 +34,9 @@ function profile_compleation($id){
         $percentage += 35;
     }
     return $percentage;
+}
+
+function categories(){
+    return Category::where('featured', true)->latest()->get();
 }
 ?>

@@ -26,23 +26,21 @@
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
                 <div class="navbar-collapse container">
                     <ul class="navbar-nav mt-0 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="search-product.html">Vectors</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#gallery">Photos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#inner">PSD</a>
-                        </li>
+                        @foreach (categories()->take(3) as $c)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ $c->slug }}">{{ $c->name }}</a>
+                            </li>
+                        @endforeach
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                 aria-expanded="false">More Categories</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="search-product.html">Vector</a></li>
-                                <li><a class="dropdown-item" href="#">Illustration</a></li>
-                                <li><a class="dropdown-item" href="search-product.html">Photos</a></li>
+                                @foreach (categories()->skip(3) as $category)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ $category->slug }}">{{ $category->name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                         <li class="nav-item">

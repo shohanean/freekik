@@ -31,7 +31,7 @@ active
             <!--begin::Card body-->
             <div class="card-body pt-0">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
+                    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
                         <thead>
                             <tr>
                                 <th>sl</th>
@@ -44,14 +44,13 @@ active
                         <tbody>
                             @foreach ($categories as $category)
                                 <tr>
-                                    <td>asd</td>
+                                    <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>
                                         <img width="50" src="{{ Storage::disk('s3')->url($category->category_image) }}" alt="not found">
                                     </td>
-                                    <td>{{ Storage::disk('s3')->url($category->category_image) }}</td>
-                                    <td>{{ $category->featured }}</td>
-                                    <td>{{ $category->added_by }}</td>
+                                    <td>{{ ($category->featured) ? 'Yes':'No' }}</td>
+                                    <td>{{ $category->user->name }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

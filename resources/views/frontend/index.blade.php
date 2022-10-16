@@ -93,10 +93,10 @@
         </div>
         <div class="row m-auto text-center mt-4">
             <div class="col m-auto text-center">
-                @foreach ($categories->take(3) as $category)
-                <button type="button" class="btn text-white  px-3 py-1 rounded btn-sm mb-2" style="background-color: #5ea1ff;">
-                    <i class="fa-solid fa-magnifying-glass pe-2"></i> {{ $category->name }}
-                </button>
+                @foreach ($categories->random(3) as $category)
+                    <button type="button" class="btn text-white  px-3 py-1 rounded btn-sm mb-2" style="background-color: #5ea1ff;">
+                        <i class="fa-solid fa-magnifying-glass pe-2"></i> {{ $category->name }}
+                    </button>
                 @endforeach
             </div>
         </div>
@@ -124,8 +124,7 @@
                 <h5 class="m-0 text-center text-md-start">Create an account to enjoy more free downloads</h5>
             </div>
             <div class="col-sm-12 col-md-5 col-lg-5 text-center text-md-end">
-                <button type="button" class="btn border-0 web-btn text-white px-4 py-2">Sign up for
-                    free</button>
+                <a href="{{ route('register') }}" type="button" class="btn border-0 web-btn text-white px-4 py-2">Sign up for free</a>
             </div>
         </div>
     </div>
