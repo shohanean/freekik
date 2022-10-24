@@ -93,16 +93,25 @@
         </div>
         <div class="row m-auto text-center mt-4">
             <div class="col m-auto text-center">
-                @foreach ($categories->random(3) as $category)
-                    <button type="button" class="btn text-white  px-3 py-1 rounded btn-sm mb-2" style="background-color: #5ea1ff;">
-                        <i class="fa-solid fa-magnifying-glass pe-2"></i> {{ $category->name }}
-                    </button>
-                @endforeach
+                @if ($categories->count() > 3)
+                    @foreach ($categories->random(3) as $category)
+                        <a href="{{ route('category.details', $category->slug) }}" class="btn text-white  px-3 py-1 rounded btn-sm mb-2" style="background-color: #5ea1ff;">
+                            <i class="fa-solid fa-magnifying-glass pe-2"></i> {{ $category->name }}
+                        </a>
+                    @endforeach
+                @else
+                    @foreach ($categories as $category)
+                        <a href="{{ route('category.details', $category->slug) }}" class="btn text-white  px-3 py-1 rounded btn-sm mb-2" style="background-color: #5ea1ff;">
+                            <i class="fa-solid fa-magnifying-glass pe-2"></i> {{ $category->name }}
+                        </a>
+                    @endforeach
+                @endif
             </div>
         </div>
         <!-- header image part start here -->
         <div class="row  mt-4 banner-slider-main">
             @foreach ($categories as $category)
+            <a href="{{ route('category.details', $category->slug) }}">
                 <div class="col mb-4">
                     <div class="header-img-hover">
                         <figure class="d-flex justify-content-center align-content-center mb-0">
@@ -112,6 +121,7 @@
                     </div>
                     <p class="text-center text-white p-2">{{ $category->name }}</p>
                 </div>
+            </a>
             @endforeach
         </div>
         <!-- header image part end here -->

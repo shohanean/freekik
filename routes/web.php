@@ -25,6 +25,8 @@ use App\Http\Controllers\
 */
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('category/details/{category_slug}', [FrontendController::class, 'category_details'])->name('category.details');
+Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 
 Auth::routes();
 
@@ -32,7 +34,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/import', [HomeController::class, 'import'])->name('import');
 
-//Email Verification Routes
+//Email Verification Routes Start
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
@@ -46,13 +48,15 @@ Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();
     return back()->with('message', 'Verification link sent again!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+//Email Verification Routes End
 
-//Socialite Routes
+//Socialite Routes Start
 Route::get('auth/facebook', [SocialController::class, 'facebookRedirect'])->name('auth.facebook');
 Route::get('auth/facebook/callback', [SocialController::class, 'loginWithFacebook'])->name('auth.facebook.callback');
 
 Route::get('auth/google', [SocialController::class, 'googleRedirect'])->name('auth.google');
 Route::get('auth/google/callback', [SocialController::class, 'loginWithGoogle'])->name('auth.google.callback');
+//Socialite Routes End
 
 Route::middleware(['auth'])->group(function () {
     //Profile Routes

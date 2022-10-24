@@ -16,8 +16,8 @@
 <body>
     <nav class="navbar navbar-expand-lg my-3" id="navbar" aria-label="Main navigation">
         <div class="container">
-            <a class="navbar-brand fw-semibold text-white d-flex fs-3 align-items-center" href="index.html"><i
-                    class="fa-brands fa-connectdevelop pe-2 fs-1" style="color: white;"></i>FreeWeek</a>
+            <a class="navbar-brand fw-semibold text-white d-flex fs-3 align-items-center" href="{{ route('index') }}"><i
+                    class="fa-brands fa-connectdevelop pe-2 fs-1" style="color: white;"></i>FreeKik</a>
             <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
                 aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars text-white"></i>
@@ -28,23 +28,25 @@
                     <ul class="navbar-nav mt-0 mb-lg-0">
                         @foreach (categories()->take(3) as $c)
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ $c->slug }}">{{ $c->name }}</a>
+                                <a class="nav-link" href="{{ route('category.details', $c->slug) }}">{{ $c->name }}</a>
                             </li>
                         @endforeach
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                                aria-expanded="false">More Categories</a>
-                            <ul class="dropdown-menu">
-                                @foreach (categories()->skip(3) as $category)
-                                    <li>
-                                        <a class="dropdown-item" href="{{ $category->slug }}">{{ $category->name }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </li>
+                        @if (count(categories()) > 3)
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                    aria-expanded="false">More Categories</a>
+                                <ul class="dropdown-menu">
+                                    @foreach (categories()->skip(3) as $category)
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('category.details', $category->slug) }}">{{ $category->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endif
                         <li class="nav-item">
-                            <a class="nav-link" href="#footer">Contact</a>
+                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                         </li>
                     </ul>
                     <div class="d-flex flex-column flex-md-row align-items-md-center ms-auto">
