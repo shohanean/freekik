@@ -208,7 +208,7 @@
             aria-label="Toggle navigation">
             <i class="fa-solid fa-bars web-text-color"></i>
         </button>
-        <input class="form-control form-control-dark w-75 rounded-0 border-0" type="text" placeholder="Search"
+        <input class="form-control form-control-dark w-75 rounded-0 border my-1" type="text" placeholder="Search"
             aria-label="Search">
         <div class="navbar-nav me-2">
             <div class="nav-item text-nowrap d-flex align-items-center">

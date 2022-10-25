@@ -16,9 +16,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('backend.category.index', [
-            'categories' => Category::with('user')->latest()->get()
-        ]);
+        if(auth()->user()->hasPermissionTo('can manage category manager'))
+        {
+            return view('backend.category.index', [
+                'categories' => Category::with('user')->latest()->get()
+            ]);
+        }
+        else{
+            abort(404);
+        }
     }
 
     /**

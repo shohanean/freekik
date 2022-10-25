@@ -29,11 +29,19 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'can see user list']);
         Permission::create(['name' => 'can take backup']);
         Permission::create(['name' => 'can restore user']);
-        //create the role
+        Permission::create(['name' => 'can manage category manager']);
+        //create the 'Super Admin' role
         $role = Role::create(['name' => 'Super Admin']);
-        //sync all permission to the role
+        //sync all permission to the 'Super Admin' role
         $role->syncPermissions(Permission::all());
-        //assign the user that role
+        //assign the 'Super Admin' role to the user
         User::find(1)->assignRole($role);
+
+        /*
+        Only for this project:
+        As this project is a marketplace so we need a special
+        role called as "Contributor" with some permission
+        */
+        $contributor_role = Role::create(['name' => 'Contributor']);
     }
 }

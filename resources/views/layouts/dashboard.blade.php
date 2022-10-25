@@ -105,14 +105,16 @@
                                         </div>
                                     </div>
                                 @endcanany
-                                <div class="menu-item">
-									<a class="menu-link @yield('category.index')" href="{{ route('category.index') }}">
-										<span class="menu-icon">
-                                            <i class="fa fa-list-alt"></i>
-										</span>
-										<span class="menu-title">Category Manager</span>
-									</a>
-								</div>
+                                @can('can manage category manager')
+                                    <div class="menu-item">
+                                        <a class="menu-link @yield('category.index')" href="{{ route('category.index') }}">
+                                            <span class="menu-icon">
+                                                <i class="fa fa-list-alt"></i>
+                                            </span>
+                                            <span class="menu-title">Category Manager</span>
+                                        </a>
+                                    </div>
+                                @endcan
 								<div class="menu-item">
 									<div class="menu-content pt-8 pb-2">
 										<span class="menu-section text-muted text-uppercase fs-8 ls-1">User Settings</span>

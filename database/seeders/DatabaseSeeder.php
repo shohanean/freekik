@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            UserSeeder::class,
+            // UserSeeder::class, //uncomment it later shohan
             RolePermissionSeeder::class,
         ]);
     }

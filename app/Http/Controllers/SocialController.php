@@ -27,6 +27,7 @@ class SocialController extends Controller
             'password' => 'google',
             'email_verified_at' => Carbon::now()
         ]);
+        $user->assignRole('Contributor');
         Auth::login($user);
         return redirect('/home');
     }
