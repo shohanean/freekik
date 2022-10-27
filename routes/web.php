@@ -12,6 +12,7 @@ use App\Http\Controllers\
         RoleController,
         UserController,
         CategoryController,
+        UploadController,
     };
 /*
 |--------------------------------------------------------------------------
@@ -73,5 +74,8 @@ Route::middleware(['auth'])->group(function () {
 
     //Category Routes
     Route::resource('category', CategoryController::class);
+
+    //Upload Routes
+    Route::resource('upload', UploadController::class);
 });
 

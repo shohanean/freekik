@@ -856,7 +856,7 @@
 		<!--begin::Engage toolbar-->
 		<div class="engage-toolbar d-flex position-fixed px-5 fw-bolder zindex-2 top-50 end-0 transform-90 mt-20 gap-2">
 			<!--begin::Purchase link-->
-			<a href="#" target="_blank" class="engage-purchase-link btn btn-color-gray-700 bg-body btn-active-color-gray-900' btn-flex h-35px px-5 shadow-sm rounded-top-0">Sell Now</a>
+			<a href="{{ route('upload.create') }}" class="engage-purchase-link btn btn-color-gray-700 bg-body btn-active-color-gray-900' btn-flex h-35px px-5 shadow-sm rounded-top-0">Upload Files</a>
 			<!--end::Purchase link-->
 		</div>
 		<!--end::Engage toolbar-->
