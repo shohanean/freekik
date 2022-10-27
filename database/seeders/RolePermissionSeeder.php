@@ -43,5 +43,8 @@ class RolePermissionSeeder extends Seeder
         role called as "Contributor" with some permission
         */
         $contributor_role = Role::create(['name' => 'Contributor']);
+
+        $contributor_permission1 = Permission::create(['name' => 'contributor access']);
+        $contributor_role->syncPermissions($contributor_permission1);
     }
 }

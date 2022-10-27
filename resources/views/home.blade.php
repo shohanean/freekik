@@ -22,7 +22,7 @@
             <div class="card-header pt-5 mb-3">
                 <!--begin::Icon-->
                 <div class="d-flex flex-center rounded-circle h-80px w-80px" style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #F1416C">
-                    <i class="fonticon-incoming-call text-white fs-2qx lh-0"></i>
+                    <i class="fas fa-users fa-2x text-white lh-0"></i>
                 </div>
                 <!--end::Icon-->
             </div>
@@ -46,10 +46,8 @@
             <div class="card-footer" style="border-top: 1px solid rgba(255, 255, 255, 0.3);background: rgba(0, 0, 0, 0.15);">
                 <!--begin::Progress-->
                 <div class="fw-bold text-white py-2">
-                    <span class="fs-1 d-block">In words</span>
-                    <span class="opacity-50">
-                        {{ Str::ucfirst(\NumberToWords\NumberToWords::transformNumber('en', $users->total())) }}
-                    </span>
+                    <span class="fs-1 d-block">{{ Str::ucfirst(\NumberToWords\NumberToWords::transformNumber('en', $users->total())) }}</span>
+                    <span class="opacity-50">Users</span>
                 </div>
                 <!--end::Progress-->
             </div>
@@ -66,7 +64,7 @@
             <div class="card-header pt-5 mb-3">
                 <!--begin::Icon-->
                 <div class="d-flex flex-center rounded-circle h-80px w-80px" style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #7239EA">
-                    <i class="fonticon-outgoing-call text-white fs-2qx lh-0"></i>
+                    <i class="fas fa-user-check fa-2x text-white lh-0"></i>
                 </div>
                 <!--end::Icon-->
             </div>
@@ -88,8 +86,8 @@
             <div class="card-footer" style="border-top: 1px solid rgba(255, 255, 255, 0.3);background: rgba(0, 0, 0, 0.15);">
                 <!--begin::Progress-->
                 <div class="fw-bold text-white py-2">
-                    <span class="fs-1 d-block">{{ Str::ucfirst(\NumberToWords\NumberToWords::transformNumber('en', 3)) }}</span>
-                    <span class="opacity-50">Generated Leads</span>
+                    <span class="fs-1 d-block">{{ Str::ucfirst(\NumberToWords\NumberToWords::transformNumber('en', $users->whereNotNull('email_verified_at')->count())) }}</span>
+                    <span class="opacity-50">Users</span>
                 </div>
                 <!--end::Progress-->
             </div>
