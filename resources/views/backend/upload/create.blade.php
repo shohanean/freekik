@@ -8,7 +8,7 @@ active
     @includeIf('parts.toolbar', [
         'links' => [
             'home' => 'home',
-            'category manager' => 'category.index'
+            'upload files' => 'upload.create'
         ]
     ])
 @endsection
@@ -22,7 +22,7 @@ active
             <!--begin::Card header-->
             <div class="card-header">
                 <div class="card-title">
-                    <h2>General</h2>
+                    <h2>Upload Files</h2>
                 </div>
             </div>
             <!--end::Card header-->
@@ -33,8 +33,19 @@ active
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Category Name</label>
-                        <input type="text" name="name" class="form-control mb-4" placeholder="Category Name">
+                        <select name="" class="form-control mb-4">
+                            <option value=""> - Select One Category - </option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                         {{-- <div class="fv-plugins-message-container invalid-feedback">Error Message Here</div> --}}
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="mb-4 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Category Image</label>
+                        <input type="text" name="category_image" class="form-control mb-4">
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
