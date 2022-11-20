@@ -27,10 +27,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        //  auth()->user();
         // Permission::create([
         //   'name' => 'can restore user'
         // ]);
         // User::find(1)->assignRole('Super Admin');
+        if(auth()->user()->hasRole('Contributor')){
+            return view('backend.contributor.home',[
+                'users' => User::latest()->paginate(10)
+            ]);
+        }
         return view('home',[
             'users' => User::latest()->paginate(10)
         ]);

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('category.index')
+@section('upload.create')
 active
 @endsection
 
@@ -28,50 +28,48 @@ active
             <!--end::Card header-->
             <!--begin::Card body-->
             <div class="card-body pt-0">
-                <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('upload.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Category Name</label>
-                        <select name="" class="form-control mb-4">
+                        <select name="category_id" class="form-control mb-4">
                             <option value=""> - Select One Category - </option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
-                        {{-- <div class="fv-plugins-message-container invalid-feedback">Error Message Here</div> --}}
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
-                        <label class="required form-label">Category Image</label>
-                        <input type="text" name="category_image" class="form-control mb-4">
+                        <label class="required form-label">Title</label>
+                        <input type="text" name="title" class="form-control mb-4">
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
-                        <label class="required form-label">Category Description</label>
+                        <label class="required form-label">Description</label>
                         <textarea name="description" class="form-control mb-4"rows="4"></textarea>
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
-                        <label class="required form-label">Category Image</label>
-                        <input type="file" name="category_image" class="form-control mb-4">
-                        <small>240*150</small>
+                        <label class="required form-label">File Thumbnail</label>
+                        <input type="file" name="thumbnail" class="form-control mb-4">
+                        {{-- <small>240*150</small>
+                        <div class="fv-plugins-message-container invalid-feedback">Error Message Here</div> --}}
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
-                    <div class="mb-5 fv-row fv-plugins-icon-container">
-                        <label class="form-label">Featured Category?</label>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="featured">
-                        </div>
+                    <div class="mb-4 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Main File (.zip)</label>
+                        <input type="file" name="main" class="form-control mb-4">
                     </div>
                     <!--end::Input group-->
                     <!--begin::Button-->
                     <button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary">
-                        Add Category
+                        Send To Review
                     </button>
                     <!--end::Button-->
                 </form>

@@ -34,11 +34,11 @@ active
                     <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
                         <thead>
                             <tr>
-                                <th>sl</th>
-                                <th>name</th>
-                                <th>category_image</th>
-                                <th>featured</th>
-                                <th>added_by</th>
+                                <th>SL. No.</th>
+                                <th>Category Name</th>
+                                <th>Category Image</th>
+                                <th>Featured</th>
+                                <th>Added By</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,7 +47,7 @@ active
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>
-                                        <img width="50" src="{{ Storage::disk('s3')->url($category->category_image) }}" alt="not found">
+                                        <img width="50" src="{{ Storage::disk('s3')->url($category->category_image) }}" alt="not found at aws">
                                     </td>
                                     <td>{{ ($category->featured) ? 'Yes':'No' }}</td>
                                     <td>{{ $category->user->name }}</td>

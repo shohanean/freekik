@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\File;
+use Carbon\Carbon;
 
 class UploadController extends Controller
 {
@@ -15,7 +17,11 @@ class UploadController extends Controller
      */
     public function index()
     {
-        //
+        $files = File::with('category')->where([
+            'user_id' => auth()->id()
+        ])->latest()->get();
+
+        return view('backend.upload.index', compact('files'));
     }
 
     /**
@@ -38,7 +44,32 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            '*' => 'required'
+        ]);
+
+        $file_id = File::insertGetId($request->except('_token') + [
+            'user_id' => auth()->id(),
+            'created_at' => Carbon::now()
+        ]);
+
+        $thumbnail_uploaded_path = $request->file('thumbnail')->storeAs(
+            'files/'.$file_id,
+            "thumbnail-".time()."-".$request->file('thumbnail')->hashName(),
+            's3'
+        );
+
+        $main_uploaded_path = $request->file('main')->storeAs(
+            'files/'.$file_id,
+            "main-".time()."-".$request->file('main')->hashName(),
+            's3'
+        );
+
+        File::find($file_id)->update([
+            'thumbnail' => $thumbnail_uploaded_path,
+            'main' => $main_uploaded_path
+        ]);
+        return $file_id;
     }
 
     /**

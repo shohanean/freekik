@@ -46,5 +46,14 @@ class RolePermissionSeeder extends Seeder
 
         $contributor_permission1 = Permission::create(['name' => 'contributor access']);
         $contributor_role->syncPermissions($contributor_permission1);
+        /*
+        Only for this project:
+        As this project is a marketplace so we need a special
+        role called as "Reviewer" with some permission
+        */
+        $reviewer_role = Role::create(['name' => 'Reviewer']);
+
+        $reviewer_permission1 = Permission::create(['name' => 'reviewer access']);
+        $reviewer_role->syncPermissions($reviewer_permission1);
     }
 }
