@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Timeline;
 use App\Models\File;
 use Carbon\Carbon;
 
@@ -69,9 +70,20 @@ class UploadController extends Controller
             'thumbnail' => $thumbnail_uploaded_path,
             'main' => $main_uploaded_path
         ]);
+
+        Timeline::create([
+            'file_id' => $file_id,
+            'alert' => 'info',
+            'details' => 'sent to review'
+        ]);
+
         return $file_id;
     }
-
+    public function file_for_review()
+    {
+        $files = File::with(['category', 'user'])->latest()->get();
+        return view('backend.reviewer.file_for_review', compact('files'));
+    }
     /**
      * Display the specified resource.
      *
@@ -80,7 +92,10 @@ class UploadController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('backend.upload.show', [
+            'file' => File::with(['category', 'user'])->findOrFail($id),
+            'timelines' => Timeline::where('file_id', $id)->latest()->get()
+        ]);
     }
 
     /**
@@ -103,7 +118,27 @@ class UploadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->status == 'approved'){
+            $alert = 'success';
+        }
+        else if($request->status == 'soft rejected'){
+            $alert = 'warning';
+        }
+        else{
+            $alert = 'danger';
+        }
+
+        File::find($id)->update([
+            'status' => $request->status
+        ]);
+        Timeline::insert([
+            'file_id' => $id,
+            'details' => $request->status,
+            'comment' => $request->comment,
+            'alert' => $alert,
+            'created_at' => Carbon::now()
+        ]);
+        return back();
     }
 
     /**

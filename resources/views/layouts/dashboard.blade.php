@@ -128,6 +128,21 @@
 										<span class="menu-title">Profile</span>
 									</a>
 								</div>
+                                @can('reviewer access')
+                                <div class="menu-item">
+									<div class="menu-content pt-8 pb-2">
+										<span class="menu-section text-muted text-uppercase fs-8 ls-1">Review Section</span>
+									</div>
+								</div>
+                                <div class="menu-item">
+									<a class="menu-link @yield('file.for.review')" href="{{ route('file.for.review') }}">
+										<span class="menu-icon">
+                                            <i class="fa fa-user-circle"></i>
+										</span>
+										<span class="menu-title">File for Review</span>
+									</a>
+								</div>
+                                @endcan
                                 @can('contributor access')
                                 <div class="menu-item">
 									<div class="menu-content pt-8 pb-2">
