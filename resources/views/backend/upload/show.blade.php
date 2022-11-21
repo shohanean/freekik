@@ -165,8 +165,10 @@ active
                                     <!--end::Badge-->
                                     <!--begin::Content-->
                                     <div class="timeline-content d-flex">
-                                        <span class="fw-bolder text-gray-800 ps-3">
-                                            <span class="badge badge-{{ $timeline->alert }}">{{ $timeline->details }}</span>
+                                        <span class="fw-bolder text-gray-600 ps-3">
+                                            <span class="badge badge-{{ $timeline->alert }}">{{ Str::title($timeline->details) }}</span>
+                                            by
+                                            <a href="">{{ $timeline->user->name }}</a>
                                             <br>
                                             <span>{{ $timeline->comment }}</span>
                                         </span>

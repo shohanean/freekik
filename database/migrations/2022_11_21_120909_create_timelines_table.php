@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('details');
             $table->longText('comment')->nullable();
             $table->string('alert')->nullable();
+            $table->integer('user_id');
             $table->timestamps();
             $table->softDeletes();
         });

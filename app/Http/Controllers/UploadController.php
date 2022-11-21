@@ -74,6 +74,7 @@ class UploadController extends Controller
         Timeline::create([
             'file_id' => $file_id,
             'alert' => 'info',
+            'user_id' => auth()->id(),
             'details' => 'sent to review'
         ]);
 
@@ -94,7 +95,7 @@ class UploadController extends Controller
     {
         return view('backend.upload.show', [
             'file' => File::with(['category', 'user'])->findOrFail($id),
-            'timelines' => Timeline::where('file_id', $id)->latest()->get()
+            'timelines' => Timeline::with('user')->where('file_id', $id)->latest()->get()
         ]);
     }
 
@@ -136,6 +137,7 @@ class UploadController extends Controller
             'details' => $request->status,
             'comment' => $request->comment,
             'alert' => $alert,
+            'user_id' => auth()->id(),
             'created_at' => Carbon::now()
         ]);
         return back();
