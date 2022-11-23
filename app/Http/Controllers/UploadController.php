@@ -98,6 +98,13 @@ class UploadController extends Controller
             'timelines' => Timeline::with('user')->where('file_id', $id)->latest()->get()
         ]);
     }
+    public function file_for_review_details($id)
+    {
+        return view('backend.reviewer.file_for_review_details', [
+            'file' => File::with(['category', 'user'])->findOrFail($id),
+            'timelines' => Timeline::with('user')->where('file_id', $id)->latest()->get()
+        ]);
+    }
 
     /**
      * Show the form for editing the specified resource.

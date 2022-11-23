@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 
-@section('upload.index')
+@section('file.for.review')
 active
 @endsection
 
@@ -72,7 +72,8 @@ active
                                     <span class="text-muted font-weight-bolder font-size-lg">{{ $file->created_at->diffForHumans() }}</span>
                                 </div>
                             </div>
-                            <h2 class="text-center mb-5 py-5 bg-light-success">This product is uploaded by you</h2>
+                            <h2 class="text-center mb-5 py-5 bg-light-warning">Uploader Information</h2>
+                            {{-- <hr> --}}
                             <div class="col-6 col-md-4">
                                 <div class="mb-8 d-flex flex-column">
                                     <span class="text-dark font-weight-bold mb-4">#Uploader Name</span>
@@ -105,7 +106,6 @@ active
                 <!--end::Engage Widget 14-->
             </div>
             <div class="col-xl-4">
-                @if ($file->status != 'sent to review')
                 <!--begin::Engage Widget 14-->
                 <div class="card card-custom card-stretch gutter-b">
                     <div class="card-body p-15 pb-20">
@@ -116,8 +116,19 @@ active
                                 <!--begin::Info-->
                                 <div class="col-12 col-md-12">
                                     <div class="mb-8 d-flex flex-column">
+                                        <span class="text-dark font-weight-bold mb-4">Action</span>
+                                        <select class="form-select" name="status">
+                                            <option value="">-Select One-</option>
+                                            <option value="soft rejected">Soft Rejected</option>
+                                            <option value="hard rejected">Hard Rejected</option>
+                                            <option value="approved">Approved</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-12">
+                                    <div class="mb-8 d-flex flex-column">
                                         <span class="text-dark font-weight-bold mb-4">Comment</span>
-                                        <input type="text" class="form-control">
+                                        <textarea name="comment" class="form-control" rows="4"></textarea>
                                     </div>
                                 </div>
                                 <!--end::Info-->
@@ -133,7 +144,6 @@ active
                     </div>
                 </div>
                 <!--end::Engage Widget 14-->
-                @endif
                 @include('backend.parts.timeline')
             </div>
         </div>

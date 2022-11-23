@@ -77,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Upload Routes
     Route::get('file/for/review', [UploadController::class, 'file_for_review'])->name('file.for.review');
+    Route::get('file/for/review/details/{id}', [UploadController::class, 'file_for_review_details'])->name('file.for.review.details');
     Route::resource('upload', UploadController::class);
 });
 

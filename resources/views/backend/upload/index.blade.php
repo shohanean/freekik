@@ -34,14 +34,14 @@ active
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th scope="col">Thumbnail</th>
-                                <th scope="col">Category Name</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Created At</th>
-                                <th scope="col">Action</th>
+                            <tr class="fw-bolder text-muted bg-light">
+                                <th class="ps-4 rounded-start">Thumbnail</th>
+                                <th>Category Name</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Created At</th>
+                                <th class="rounded-end">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,17 +52,18 @@ active
                                     </td>
                                     <td>
                                         {{ $file->category->name }}
-                                        <img width="40" src="{{ Storage::disk('s3')->url($file->category->category_image) }}" alt="not found">
                                     </td>
                                     <td>{{ $file->title }}</td>
                                     <td>{{ $file->description }}</td>
                                     <td>{{ $file->status }}</td>
                                     <td>{{ $file->created_at->diffForHumans() }}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-info" download href="{{ Storage::disk('s3')->url($file->main) }}">
-                                            <i class="fa fa-download"></i>
-                                            Download Files
-                                        </a>
+                                        <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                            <div class="btn-group" role="group" aria-label="First group">
+                                                <a href="{{ route('upload.show', $file->id) }}" class="btn btn-primary btn-icon"><i class="fa fa-file"></i></a>
+                                                {{-- <a download href="{{ Storage::disk('s3')->url($file->main) }}" class="btn btn-info btn-icon"><i class="fa fa-download"></i></a> --}}
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

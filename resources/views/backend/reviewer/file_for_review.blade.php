@@ -34,21 +34,19 @@ active
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th scope="col">SL. No.</th>
-                                <th scope="col">Thumbnail</th>
-                                <th scope="col">Category Name</th>
-                                <th scope="col">Contributor Name</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Created At</th>
-                                <th scope="col">Action</th>
+                            <tr class="fw-bolder text-muted bg-light">
+                                <th class="ps-4 rounded-start">Thumbnail</th>
+                                <th>Category Name</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Created At</th>
+                                <th class="rounded-end">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($files as $file)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
                                     <td>
                                         <img width="80" src="{{ Storage::disk('s3')->url($file->thumbnail) }}" alt="not found">
                                     </td>
@@ -64,8 +62,7 @@ active
                                     <td>
                                         <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                                             <div class="btn-group" role="group" aria-label="First group">
-                                                <a href="{{ route('upload.show', $file->id) }}" class="btn btn-primary btn-icon"><i class="fa fa-file"></i></a>
-                                                <a download href="{{ Storage::disk('s3')->url($file->main) }}" class="btn btn-info btn-icon"><i class="fa fa-download"></i></a>
+                                                <a href="{{ route('file.for.review.details', $file->id) }}" class="btn btn-primary btn-icon"><i class="fa fa-file"></i></a>
                                             </div>
                                         </div>
                                     </td>
