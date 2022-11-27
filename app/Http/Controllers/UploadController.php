@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Timeline;
 use App\Models\File;
 use Carbon\Carbon;
+
 
 class UploadController extends Controller
 {
@@ -158,6 +160,8 @@ class UploadController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Storage::disk('s3')->deleteDirectory('files/'.$id);
+        File::find($id)->delete();
+        return redirect('upload');
     }
 }

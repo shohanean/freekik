@@ -96,8 +96,18 @@ active
                         <!--begin::Buttons-->
                         <div class="d-flex">
                             <a download href="{{ Storage::disk('s3')->url($file->main) }}" class="btn btn-sm btn-primary font-weight-bolder mr-6 px-6 font-size-sm">
-                                <i class="fa fa-download"></i> Download File to Review
+                                <i class="fa fa-download"></i> Download Your Uploaded File
                             </a>
+                            @if ($file->status == 'sent to review')
+                                &nbsp;
+                                <form action="{{ route('upload.destroy', $file->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger font-weight-bolder mr-6 px-6 font-size-sm" type="submit">
+                                        <i class="fa fa-trash"></i> Delete Your Submission
+                                    </button>
+                                </form>
+                            @endif
                         </div>
                         <!--end::Buttons-->
                     </div>

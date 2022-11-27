@@ -24,7 +24,9 @@
                             by
                             <a href="">{{ $timeline->user->name }}</a>
                             <br>
-                            <span>{{ $timeline->comment }}</span>
+                            <span>
+                                {{ $timeline->comment }}
+                            </span>
                         </span>
                     </div>
                     <!--end::Content-->
