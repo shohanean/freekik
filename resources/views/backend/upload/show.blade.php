@@ -125,9 +125,16 @@ active
                             <div class="row">
                                 <!--begin::Info-->
                                 <div class="col-12 col-md-12">
-                                    <div class="mb-8 d-flex flex-column">
-                                        <span class="text-dark font-weight-bold mb-4">Comment</span>
-                                        <input type="text" class="form-control">
+                                    <div class="mb-3 d-flex flex-column">
+                                        <h3>Resubmit</h3>
+                                    </div>
+                                    <div class="mb-3 d-flex flex-column">
+                                        <label class="required form-label">File Thumbnail</label>
+                                        <input type="file" name="thumbnail" class="form-control mb-4">
+                                    </div>
+                                    <div class="mb-3 d-flex flex-column">
+                                        <label class="required form-label">Main File (.zip)</label>
+                                        <input type="file" name="main" class="form-control mb-4">
                                     </div>
                                 </div>
                                 <!--end::Info-->
@@ -135,7 +142,7 @@ active
                             <!--begin::Buttons-->
                             <div class="d-flex">
                                 <button type="submit" class="btn btn-primary font-weight-bolder mr-6 px-6 font-size-sm">
-                                    Submit
+                                    Resubmit
                                 </button>
                             </div>
                             <!--end::Buttons-->
