@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreeWeek</title>
+    <title>FreeWeek - {{ $category->name }}</title>
     <link rel="stylesheet" href="{{ asset('app_assets') }}/css/bootstrap.css">
     <link rel="stylesheet" href="{{ asset('app_assets') }}/scss/style.css">
     <script src="https://kit.fontawesome.com/5779382e95.js" crossorigin="anonymous"></script>
@@ -452,19 +452,19 @@
                 </div>
                 <!-- body or item start here -->
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-                    @for ($i=1; $i<14; $i++)
+                    @forelse ($files as $file)
                         <div class="col">
                             <figure class="position-relative image-item">
-                                <img src="{{ asset('app_assets') }}/images/g-10.jpg" class="img-fluid" alt="">
+                                <img src="{{ Storage::disk('s3')->url($file->thumbnail) }}" class="img-fluid" alt="img not found">
                                 <div class="item-overlay position-absolute p-4">
                                     <div class="overlay-content d-flex">
                                         <div class="">
                                             <p class="d-inline-block text-truncate mb-0 text-white" style="max-width: 280px;">
-                                                Clean style modern business card template
+                                                {{ $file->title }}
                                             </p>
                                             <a href="https://www.figma.com/" class="d-block text-decoration-none text-white">
                                                 <img src="{{ asset('app_assets') }}/images/suzayet.jpg" class="rounded-circle me-2" alt="suzayet" style="width: 30px; height: 30px;">
-                                                Suzayet Hossain
+                                                {{ $file->user->name }}
                                             </a>
                                         </div>
                                         <div class="d-flex flex-column overlay-social ps-1">
@@ -482,7 +482,11 @@
                                 </div>
                             </figure>
                         </div>
-                    @endfor
+                    @empty
+                        <div class="alert alert-danger">
+                            <h1>Nothing to show</h1>
+                        </div>
+                    @endforelse
                 </div>
                 <!-- body or item end here -->
             </main>

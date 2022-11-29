@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Imports\UsersImport;
+use App\Models\File;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
 
@@ -35,7 +36,8 @@ class HomeController extends Controller
         // User::find(1)->assignRole('Super Admin');
         if(auth()->user()->hasRole('Contributor')){
             return view('backend.contributor.home',[
-                'users' => User::latest()->paginate(10)
+                'users' => User::latest()->paginate(10),
+                'files' => File::where('user_id', auth()->id())->get(),
             ]);
         }
         return view('home',[

@@ -115,7 +115,7 @@ active
                 <!--end::Engage Widget 14-->
             </div>
             <div class="col-xl-4">
-                @if ($file->status != 'sent to review')
+                @if ($file->status == 'soft rejected')
                 <!--begin::Engage Widget 14-->
                 <div class="card card-custom card-stretch gutter-b">
                     <div class="card-body p-15 pb-20">
