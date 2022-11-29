@@ -38,6 +38,7 @@ class HomeController extends Controller
             return view('backend.contributor.home',[
                 'users' => User::latest()->paginate(10),
                 'files' => File::where('user_id', auth()->id())->get(),
+                'trashed_files' => File::onlyTrashed()->where('user_id', auth()->id())->get(),
             ]);
         }
         return view('home',[

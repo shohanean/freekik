@@ -36,9 +36,8 @@ active
                         <thead>
                             <tr class="fw-bolder text-muted bg-light">
                                 <th class="ps-4 rounded-start">Thumbnail</th>
-                                <th>Category Name</th>
                                 <th>Title</th>
-                                <th>Description</th>
+                                <th>Category Name</th>
                                 <th>Status</th>
                                 <th>Created At</th>
                                 <th class="rounded-end">Action</th>
@@ -50,11 +49,10 @@ active
                                     <td>
                                         <img width="80" src="{{ Storage::disk('s3')->url($file->thumbnail) }}" alt="not found">
                                     </td>
+                                    <td>{{ $file->title }}</td>
                                     <td>
                                         {{ $file->category->name }}
                                     </td>
-                                    <td>{{ $file->title }}</td>
-                                    <td>{{ $file->description }}</td>
                                     <td>{{ $file->status }}</td>
                                     <td>{{ $file->created_at->diffForHumans() }}</td>
                                     <td>
