@@ -224,7 +224,7 @@
                 <!--begin::Info-->
                 <div class="d-flex align-items-center">
                     <span class="fs-4hx fw-bold me-6 d-block">
-                        -
+                        {{ $downloads }}
                     </span>
                     <div class="fw-bold fs-6">
                         <span class="d-block">Total</span>

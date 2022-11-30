@@ -67,6 +67,12 @@ active
                         <input type="file" name="main" class="form-control mb-4">
                     </div>
                     <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="mb-4 fv-row fv-plugins-icon-container">
+                        <label class="required form-label">Tags (Maximum three tags)</label>
+                        <input type="text" name="tags" id="tags" class="mb-4">
+                    </div>
+                    <!--end::Input group-->
                     <!--begin::Button-->
                     <button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary">
                         Send To Review
@@ -83,5 +89,23 @@ active
 
 </div>
 </div>
+@endsection
+
+@section('footer_scripts')
+<script>
+    $(document).ready(function() {
+        $('#tags').selectize({
+            delimiter: ',',
+            maxItems: 3,
+            persist: false,
+            create: function(input) {
+                return {
+                    value: input,
+                    text: input
+                }
+            }
+        });
+    });
+</script>
 @endsection
 

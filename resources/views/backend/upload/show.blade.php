@@ -119,14 +119,14 @@ active
                 <!--begin::Engage Widget 14-->
                 <div class="card card-custom card-stretch gutter-b">
                     <div class="card-body p-15 pb-20">
-                        <form action="{{ route('upload.update', $file->id) }}" method="POST">
+                        <form action="{{ route('file.resubmit', $file->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
                             <div class="row">
                                 <!--begin::Info-->
                                 <div class="col-12 col-md-12">
                                     <div class="mb-3 d-flex flex-column">
-                                        <h3>Resubmit</h3>
+                                        <h3>Resubmit your Files</h3>
                                     </div>
                                     <div class="mb-3 d-flex flex-column">
                                         <label class="required form-label">File Thumbnail</label>

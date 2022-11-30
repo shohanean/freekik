@@ -27,6 +27,8 @@ use App\Http\Controllers\
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('category/details/{category_slug}', [FrontendController::class, 'category_details'])->name('category.details');
+Route::get('item/{file_slug}', [FrontendController::class, 'item_details'])->name('item.details');
+Route::post('download/{file_slug}', [FrontendController::class, 'download'])->name('download');
 Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 
 Auth::routes();
@@ -78,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
     //Upload Routes
     Route::get('file/for/review', [UploadController::class, 'file_for_review'])->name('file.for.review');
     Route::get('file/for/review/details/{id}', [UploadController::class, 'file_for_review_details'])->name('file.for.review.details');
+    Route::patch('file/resubmit/{id}', [UploadController::class, 'file_resubmit'])->name('file.resubmit');
     Route::resource('upload', UploadController::class);
 });
 

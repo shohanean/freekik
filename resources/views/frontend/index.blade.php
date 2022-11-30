@@ -151,89 +151,39 @@
         <div class="row mt-4">
             <div class="col-lg-6">
                 <figure class="position-relative gallery-overly">
-                    <img src="{{ asset('app_assets') }}/images/pexels-lisa-fotios-1090638.jpg" class="img-fluid w-100"
-                        style="height: 447px;" alt="">
+                    <img src="{{ Storage::disk('s3')->url($files->first()->thumbnail) }}" class="img-fluid w-100" style="height: 447px;" alt="">
                     <p class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
-                        <span class="fw-semibold text-white p-2">Camra</span>
+                        <span class="badge bg-secondary fw-semibold text-white p-2">{{ $files->first()->category->name }}</span>
                     </p>
                 </figure>
             </div>
             <div class="col-lg-6">
                 <div class="row">
-                    <div class="col-md-6 col-lg-6">
-                        <figure class="position-relative gallery-overly">
-                            <img src="{{ asset('app_assets') }}/images/g-7.jpg" class="img-fluid w-100" style="height: 215px;" alt="">
-                            <p
-                                class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
-                                <span class="fw-semibold text-white p-2">Banner</span>
-                            </p>
-                        </figure>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <figure class="position-relative gallery-overly">
-                            <img src="{{ asset('app_assets') }}/images/g-23.jpg" class="img-fluid w-100" style="height: 215px;" alt="">
-                            <p
-                                class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
-                                <span class="fw-semibold text-white p-2">Ice cream</span>
-                            </p>
-                        </figure>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-lg-6">
-                        <figure class="position-relative gallery-overly">
-                            <img src="{{ asset('app_assets') }}/images/g-10.jpg" class="img-fluid w-100" style="height: 215px;" alt="">
-                            <p
-                                class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
-                                <span class="fw-semibold text-white p-2">Recycling</span>
-                            </p>
-                        </figure>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <figure class="position-relative gallery-overly">
-                            <img src="{{ asset('app_assets') }}/images/g-8.jpg" class="img-fluid w-100" style="height: 215px;" alt="">
-                            <p
-                                class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
-                                <span class="fw-semibold text-white p-2">Recycling</span>
-                            </p>
-                        </figure>
-                    </div>
+                    @foreach ($files->slice(1,4) as $file)
+                        <div class="col-md-6 col-lg-6">
+                            <figure class="position-relative gallery-overly">
+                                <img src="{{ Storage::disk('s3')->url($file->thumbnail) }}" class="img-fluid w-100" style="height: 215px;" alt="">
+                                <p
+                                    class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
+                                    <span class="badge bg-secondary fw-semibold text-white p-2">{{ $file->category->name }}</span>
+                                </p>
+                            </figure>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+            @foreach ($files->slice(5,4) as $file)
             <div class="col">
                 <figure class="position-relative gallery-overly">
-                    <img src="{{ asset('app_assets') }}/images/g-9.jpg" class="img-fluid w-100" style="height: 215px;" alt="">
+                    <img src="{{ Storage::disk('s3')->url($file->thumbnail) }}" class="img-fluid w-100" style="height: 215px;" alt="">
                     <p class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
-                        <span class="fw-semibold text-white p-2">Party portraits</span>
+                        <span class="badge bg-secondary fw-semibold text-white p-2">{{ $file->category->name }}</span>
                     </p>
                 </figure>
             </div>
-            <div class="col">
-                <figure class="position-relative gallery-overly">
-                    <img src="{{ asset('app_assets') }}/images/g-6.jpg" class="img-fluid w-100" style="height: 215px;" alt="">
-                    <p class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
-                        <span class="fw-semibold text-white p-2">Camra</span>
-                    </p>
-                </figure>
-            </div>
-            <div class="col">
-                <figure class="position-relative gallery-overly">
-                    <img src="{{ asset('app_assets') }}/images/g-5.jpg" class="img-fluid w-100" style="height: 215px;" alt="">
-                    <p class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
-                        <span class="fw-semibold text-white p-2">Party portraits</span>
-                    </p>
-                </figure>
-            </div>
-            <div class="col">
-                <figure class="position-relative gallery-overly">
-                    <img src="{{ asset('app_assets') }}/images/g-4.webp" class="img-fluid w-100" style="height: 215px;" alt="">
-                    <p class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
-                        <span class="fw-semibold text-white p-2">Instagram mockup</span>
-                    </p>
-                </figure>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

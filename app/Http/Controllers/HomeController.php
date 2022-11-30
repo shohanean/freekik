@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Imports\UsersImport;
+use App\Models\Download;
 use App\Models\File;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
@@ -39,6 +40,7 @@ class HomeController extends Controller
                 'users' => User::latest()->paginate(10),
                 'files' => File::where('user_id', auth()->id())->get(),
                 'trashed_files' => File::onlyTrashed()->where('user_id', auth()->id())->get(),
+                'downloads' => Download::where('contributor_id', auth()->id())->count(),
             ]);
         }
         return view('home',[

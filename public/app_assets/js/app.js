@@ -1,7 +1,7 @@
 
 (() => {
     'use strict'
-  
+
     document.querySelector('#navbarSideCollapse').addEventListener('click', () => {
       document.querySelector('.offcanvas-collapse').classList.toggle('open')
     });
@@ -14,9 +14,6 @@
 
     //
     $(".modal-dialog").css("width", "100%");
-    $('.image-item').click(function(){
-      window.location.href = 'view.html';
-    });
 
     $('.banner-slider-main').slick({
       slidesToShow: 6,
@@ -69,6 +66,5 @@
     });
 
 
-    
+
   })()
-  

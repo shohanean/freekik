@@ -459,9 +459,11 @@
                                 <div class="item-overlay position-absolute p-4">
                                     <div class="overlay-content d-flex">
                                         <div class="">
-                                            <p class="d-inline-block text-truncate mb-0 text-white" style="max-width: 280px;">
-                                                {{ $file->title }}
-                                            </p>
+                                            <a href="{{ route('item.details', $file->slug) }}">
+                                                <p class="d-inline-block text-truncate mb-0 text-white" style="max-width: 280px;">
+                                                    {{ $file->title }}
+                                                </p>
+                                            </a>
                                             <a href="https://www.figma.com/" class="d-block text-decoration-none text-white">
                                                 <img src="{{ asset('app_assets') }}/images/suzayet.jpg" class="rounded-circle me-2" alt="suzayet" style="width: 30px; height: 30px;">
                                                 {{ $file->user->name }}
@@ -483,9 +485,9 @@
                             </figure>
                         </div>
                     @empty
-                        <div class="alert alert-danger">
-                            <h1>Nothing to show</h1>
-                        </div>
+                    <div class="alert alert-danger">
+                        Nothing to show
+                    </div>
                     @endforelse
                 </div>
                 <!-- body or item end here -->

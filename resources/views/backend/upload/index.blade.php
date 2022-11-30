@@ -25,7 +25,7 @@ active
                     <h2>
                         Upload Files
                     </h2>
-                    <span class="ms-3 badge badge-success">{{ $files->count() }}</span>
+                    <span class="ms-3 badge badge-success">{{ $files->total() }}</span>
                 </div>
             </div>
             <!--end::Card header-->
@@ -39,27 +39,35 @@ active
                                 <th>Title</th>
                                 <th>Category Name</th>
                                 <th>Status</th>
-                                <th>Created At</th>
+                                <th>First Submission</th>
                                 <th class="rounded-end">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($files as $file)
-                                <tr>
+                                <tr class="border-bottom align-middle">
                                     <td>
                                         <img width="80" src="{{ Storage::disk('s3')->url($file->thumbnail) }}" alt="not found">
                                     </td>
-                                    <td>{{ $file->title }}</td>
                                     <td>
-                                        {{ $file->category->name }}
+                                        <b>{{ $file->title }}</b>
                                     </td>
-                                    <td>{{ $file->status }}</td>
+                                    <td>
+                                        <a href="{{ route('category.details', $file->category->slug) }}" target="_black">{{ $file->category->name }}</a>
+                                    </td>
+                                    <td>
+                                        @if ($file->status == 'approved')
+                                            <i class="fa fa-check-circle text-success"></i>
+                                        @else
+                                            <i class="fa fa-exclamation-circle text-warning"></i>
+                                        @endif
+                                        {{ $file->status }}
+                                    </td>
                                     <td>{{ $file->created_at->diffForHumans() }}</td>
                                     <td>
                                         <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
                                             <div class="btn-group" role="group" aria-label="First group">
                                                 <a href="{{ route('upload.show', $file->id) }}" class="btn btn-primary btn-icon"><i class="fa fa-file"></i></a>
-                                                {{-- <a download href="{{ Storage::disk('s3')->url($file->main) }}" class="btn btn-info btn-icon"><i class="fa fa-download"></i></a> --}}
                                             </div>
                                         </div>
                                     </td>
@@ -67,6 +75,7 @@ active
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $files->links() }}
                 </div>
 
             </div>

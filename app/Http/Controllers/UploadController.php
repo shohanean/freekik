@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Timeline;
 use App\Models\File;
 use Carbon\Carbon;
-
+use Illuminate\Support\Str;
 
 class UploadController extends Controller
 {
@@ -20,9 +21,15 @@ class UploadController extends Controller
      */
     public function index()
     {
+        // foreach (File::all() as $key => $file) {
+        //     File::find($file->id)->update([
+        //         'slug' => Str::slug($file->title) . "-" . $file->id
+        //     ]);
+        // }
+
         $files = File::with('category')->where([
             'user_id' => auth()->id()
-        ])->latest()->get();
+        ])->latest()->paginate(10);
 
         return view('backend.upload.index', compact('files'));
     }
@@ -70,7 +77,8 @@ class UploadController extends Controller
 
         File::find($file_id)->update([
             'thumbnail' => $thumbnail_uploaded_path,
-            'main' => $main_uploaded_path
+            'main' => $main_uploaded_path,
+            'slug' => Str::slug($request->title) . "-" . $file_id
         ]);
 
         Timeline::create([
@@ -163,5 +171,35 @@ class UploadController extends Controller
         Storage::disk('s3')->deleteDirectory('files/'.$id);
         File::find($id)->delete();
         return redirect('upload');
+    }
+    public function file_resubmit(Request $request, $file_id)
+    {
+        // return $request;
+        Storage::disk('s3')->deleteDirectory('files/'. $file_id);
+        $thumbnail_uploaded_path = $request->file('thumbnail')->storeAs(
+            'files/' . $file_id,
+            "thumbnail-" . time() . "-" . $request->file('thumbnail')->hashName(),
+            's3'
+        );
+
+        $main_uploaded_path = $request->file('main')->storeAs(
+            'files/' . $file_id,
+            "main-" . time() . "-" . $request->file('main')->hashName(),
+            's3'
+        );
+
+        File::find($file_id)->update([
+            'thumbnail' => $thumbnail_uploaded_path,
+            'main' => $main_uploaded_path,
+            'status' => 'resubmited'
+        ]);
+
+        Timeline::create([
+            'file_id' => $file_id,
+            'alert' => 'primary',
+            'user_id' => auth()->id(),
+            'details' => 'resubmited'
+        ]);
+        return back();
     }
 }
