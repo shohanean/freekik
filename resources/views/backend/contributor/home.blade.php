@@ -209,6 +209,38 @@
     <!--begin::Col-->
     <div class="col-xl-3">
         <!--begin::Card widget 3-->
+        <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100" style="background-color: #548c82">
+            <!--begin::Header-->
+            <div class="card-header pt-5 mb-3">
+                <!--begin::Icon-->
+                <div class="d-flex flex-center rounded-circle h-80px w-80px" style="border: 1px dashed rgba(0, 0, 0, 0.4);background-color: #548c82">
+                    <i class="fa fa-arrow-down fa-2x text-black lh-0"></i>
+                </div>
+                <!--end::Icon-->
+            </div>
+            <!--end::Header-->
+            <!--begin::Card body-->
+            <div class="card-body d-flex align-items-end mb-3">
+                <!--begin::Info-->
+                <div class="d-flex align-items-center">
+                    <span class="fs-4hx fw-bold me-6 d-block">
+                        {{ $todaysdownloads->count() }}
+                    </span>
+                    <div class="fw-bold fs-6">
+                        <span class="d-block">Today's</span>
+                        <span class="">Download</span>
+                    </div>
+                </div>
+                <!--end::Info-->
+            </div>
+            <!--end::Card body-->
+        </div>
+        <!--end::Card widget 3-->
+    </div>
+    <!--end::Col-->
+    <!--begin::Col-->
+    <div class="col-xl-3">
+        <!--begin::Card widget 3-->
         <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100" style="background-color: #4efddd">
             <!--begin::Header-->
             <div class="card-header pt-5 mb-3">
@@ -224,7 +256,7 @@
                 <!--begin::Info-->
                 <div class="d-flex align-items-center">
                     <span class="fs-4hx fw-bold me-6 d-block">
-                        {{ $downloads }}
+                        {{ $downloads->count() }}
                     </span>
                     <div class="fw-bold fs-6">
                         <span class="d-block">Total</span>
@@ -238,5 +270,42 @@
         <!--end::Card widget 3-->
     </div>
     <!--end::Col-->
+</div>
+<div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Top 3 Downloaded File Of Yours
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="fw-bolder text-muted bg-light">
+                                <th class="ps-4 rounded-start">File Name</th>
+                                <th># of Download</th>
+                                <th class="rounded-end">Rank</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($tops as $top)
+                                <tr class="border-bottom align-middle">
+                                    <td>
+                                        <a href="{{ route('item.details', App\Models\File::find($top->file_id)->slug) }}" target="_blank">{{ App\Models\File::find($top->file_id)->title }}</a>
+                                    </td>
+                                    <td>{{ $top->total }}</td>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                </tr>
+                            @empty
+
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

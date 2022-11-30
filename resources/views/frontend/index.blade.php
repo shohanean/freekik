@@ -111,7 +111,7 @@
         <!-- header image part start here -->
         <div class="row  mt-4 banner-slider-main">
             @foreach ($categories as $category)
-            <a href="{{ route('category.details', $category->slug) }}">
+            <a href="{{ route('category.details', $category->slug) }}" class="text-decoration-none">
                 <div class="col mb-4">
                     <div class="header-img-hover">
                         <figure class="d-flex justify-content-center align-content-center mb-0">
@@ -131,10 +131,20 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-7 col-lg-7 d-flex align-items-center mb-3 mb-md-0">
-                <h5 class="m-0 text-center text-md-start">Create an account to enjoy more free downloads</h5>
+                <h5 class="m-0 text-center text-md-start">
+                    @auth
+                    Now you are the member, you can download more
+                    @else
+                    Create an account to enjoy more free downloads
+                    @endauth
+                </h5>
             </div>
             <div class="col-sm-12 col-md-5 col-lg-5 text-center text-md-end">
+                @auth
+                <a href="{{ route('home') }}" type="button" class="btn border-0 web-btn text-white px-4 py-2">Go To Dashboard</a>
+                @else
                 <a href="{{ route('register') }}" type="button" class="btn border-0 web-btn text-white px-4 py-2">Sign up for free</a>
+                @endauth
             </div>
         </div>
     </div>

@@ -7,8 +7,10 @@ use App\Models\User;
 use App\Imports\UsersImport;
 use App\Models\Download;
 use App\Models\File;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
+use DB;
 
 class HomeController extends Controller
 {
@@ -35,12 +37,15 @@ class HomeController extends Controller
         //   'name' => 'can restore user'
         // ]);
         // User::find(1)->assignRole('Super Admin');
+
         if(auth()->user()->hasRole('Contributor')){
             return view('backend.contributor.home',[
                 'users' => User::latest()->paginate(10),
                 'files' => File::where('user_id', auth()->id())->get(),
                 'trashed_files' => File::onlyTrashed()->where('user_id', auth()->id())->get(),
-                'downloads' => Download::where('contributor_id', auth()->id())->count(),
+                'downloads' => Download::where('contributor_id', auth()->id())->get(),
+                'todaysdownloads' => Download::where('contributor_id', auth()->id())->whereDate('created_at', Carbon::now())->get(),
+                'tops' => Download::where('contributor_id', auth()->id())->groupBy('file_id')->select('file_id', DB::raw('count(*) as total'))->orderBy('total', 'DESC')->take(3)->get(),
             ]);
         }
         return view('home',[
