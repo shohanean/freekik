@@ -157,7 +157,7 @@
 								<div class="menu-item">
 									<a class="menu-link @yield('upload.create')" href="{{ route('upload.create') }}">
 										<span class="menu-icon">
-                                            <i class="fa fa-user-circle"></i>
+                                            <i class="fas fa-file-import"></i>
 										</span>
 										<span class="menu-title">Upload Files</span>
 									</a>
@@ -165,7 +165,7 @@
 								<div class="menu-item">
 									<a class="menu-link @yield('upload.index')" href="{{ route('upload.index') }}">
 										<span class="menu-icon">
-                                            <i class="fa fa-user-circle"></i>
+                                            <i class="fas fa-copy"></i>
 										</span>
 										<span class="menu-title">Files</span>
 									</a>
@@ -735,7 +735,7 @@
 											<div class="menu-item px-5">
 												<a href="{{ route('profile.index') }}" class="menu-link px-5">
 													<span class="menu-text">
-                                                        <i class="fa fa-user"></i>
+                                                        <i class="far fa-id-badge text-black me-3"></i>
                                                         My Profile
                                                     </span>
 												</a>
@@ -743,86 +743,91 @@
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
 											<div class="menu-item px-5">
-												<a href="../../demo1/dist/apps/projects/list.html" class="menu-link px-5">
-													<span class="menu-text">My Projects</span>
-													<span class="menu-badge">
-														<span class="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
-													</span>
+												<a href="{{ route('upload.index') }}" class="menu-link px-5">
+													<span class="menu-text">
+                                                        <i class="fas fa-tasks text-black me-3"></i>
+                                                        My Files
+                                                    </span>
+													{{-- <span class="menu-badge">
+														<span class="badge badge-light-info badge-circle fw-bolder fs-7">3</span>
+													</span> --}}
 												</a>
 											</div>
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
-											<div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-												<a href="#" class="menu-link px-5">
-													<span class="menu-title">My Subscription</span>
-													<span class="menu-arrow"></span>
-												</a>
-												<!--begin::Menu sub-->
-												<div class="menu-sub menu-sub-dropdown w-175px py-4">
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="../../demo1/dist/account/referrals.html" class="menu-link px-5">Referrals</a>
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="../../demo1/dist/account/statements.html" class="menu-link d-flex flex-stack px-5">Statements
-														<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="View your statements"></i></a>
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu separator-->
-													<div class="separator my-2"></div>
-													<!--end::Menu separator-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<div class="menu-content px-3">
-															<label class="form-check form-switch form-check-custom form-check-solid">
-																<input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-																<span class="form-check-label text-muted fs-7">Notifications</span>
-															</label>
-														</div>
-													</div>
-													<!--end::Menu item-->
-												</div>
-												<!--end::Menu sub-->
-											</div>
+                                                {{-- <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
+                                                    <a href="#" class="menu-link px-5">
+                                                        <span class="menu-title">My Subscription</span>
+                                                        <span class="menu-arrow"></span>
+                                                    </a>
+                                                    <!--begin::Menu sub-->
+                                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="../../demo1/dist/account/referrals.html" class="menu-link px-5">Referrals</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="../../demo1/dist/account/statements.html" class="menu-link d-flex flex-stack px-5">Statements
+                                                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="View your statements"></i></a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu separator-->
+                                                        <div class="separator my-2"></div>
+                                                        <!--end::Menu separator-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <div class="menu-content px-3">
+                                                                <label class="form-check form-switch form-check-custom form-check-solid">
+                                                                    <input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
+                                                                    <span class="form-check-label text-muted fs-7">Notifications</span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                    </div>
+                                                    <!--end::Menu sub-->
+                                                </div> --}}
 											<!--end::Menu item-->
 											<!--begin::Menu separator-->
 											<div class="separator my-2"></div>
 											<!--end::Menu separator-->
 											<!--begin::Menu item-->
-											<div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-												<a href="#" class="menu-link px-5">
-													<span class="menu-title position-relative">Language
-													<span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
-													<img class="w-15px h-15px rounded-1 ms-2" src="{{ asset('dashboard_assets') }}/media/flags/united-states.svg" alt="" /></span></span>
-												</a>
-												<!--begin::Menu sub-->
-												<div class="menu-sub menu-sub-dropdown w-175px py-4">
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5 active">
-														<span class="symbol symbol-20px me-4">
-															<img class="rounded-1" src="{{ asset('dashboard_assets') }}/media/flags/united-states.svg" alt="" />
-														</span>English</a>
-													</div>
-													<!--end::Menu item-->
-													<!--begin::Menu item-->
-													<div class="menu-item px-3">
-														<a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
-														<span class="symbol symbol-20px me-4">
-															<img class="rounded-1" src="{{ asset('dashboard_assets') }}/media/flags/spain.svg" alt="" />
-														</span>Spanish</a>
-													</div>
-													<!--end::Menu item-->
-												</div>
-												<!--end::Menu sub-->
-											</div>
+                                                {{-- <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
+                                                    <a href="#" class="menu-link px-5">
+                                                        <span class="menu-title position-relative">Language
+                                                        <span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">English
+                                                        <img class="w-15px h-15px rounded-1 ms-2" src="{{ asset('dashboard_assets') }}/media/flags/united-states.svg" alt="" /></span></span>
+                                                    </a>
+                                                    <!--begin::Menu sub-->
+                                                    <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5 active">
+                                                            <span class="symbol symbol-20px me-4">
+                                                                <img class="rounded-1" src="{{ asset('dashboard_assets') }}/media/flags/united-states.svg" alt="" />
+                                                            </span>English</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                        <!--begin::Menu item-->
+                                                        <div class="menu-item px-3">
+                                                            <a href="../../demo1/dist/account/settings.html" class="menu-link d-flex px-5">
+                                                            <span class="symbol symbol-20px me-4">
+                                                                <img class="rounded-1" src="{{ asset('dashboard_assets') }}/media/flags/spain.svg" alt="" />
+                                                            </span>Spanish</a>
+                                                        </div>
+                                                        <!--end::Menu item-->
+                                                    </div>
+                                                    <!--end::Menu sub-->
+                                                </div> --}}
 											<!--end::Menu item-->
 											<!--begin::Menu item-->
 											<div class="menu-item px-5">
 												<a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" class="menu-link px-5">Logout</a>
+                                                     document.getElementById('logout-form').submit();" class="menu-link px-5 text-danger">
+                                                    <i class="fas fa-sign-out-alt text-danger me-3"></i>
+                                                    Logout</a>
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                     @csrf

@@ -88,7 +88,7 @@ class UploadController extends Controller
             'details' => 'sent to review'
         ]);
 
-        return $file_id;
+        return back()->with('success', 'Your file sent to review successfully!');
     }
     public function file_for_review()
     {

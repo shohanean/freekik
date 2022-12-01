@@ -50,15 +50,17 @@
                         </li>
                     </ul>
                     <div class="d-flex flex-column flex-md-row align-items-md-center ms-auto">
-                        <a href="" class="text-white me-4 text-decoration-none">Sell your content</a>
-                        <a href="" class="text-white me-4 text-decoration-none">Pricing</a>
-                        <!-- <p class="mb-0">
+                        @auth
+                            <a href="{{ route('upload.create') }}" class="text-white me-4 text-decoration-none"><i class="fa fa-upload"></i> Upload Your File</a>
+                        @endauth
+                        {{-- <a href="" class="text-white me-4 text-decoration-none">Pricing</a> --}}
+                        {{-- <p class="mb-0">
                             <a href="" class="text-white me-4 text-decoration-none fw-semibold" id="login">Log in</a>
                             <a href="register.html" class="text-white me-4 text-decoration-none fw-semibold">Sign up</a>
-                        </p>  -->
-                        <a href="" class="text-white me-4">
+                        </p> --}}
+                        {{-- <a href="" class="text-white me-4">
                             <i class="fa-regular fa-bell"></i>
-                        </a>
+                        </a> --}}
                         @guest
                         <div class="btn-group">
                             <button type="button" class="text-white border-0 bg-transparent dropdown-toggle"
@@ -91,40 +93,39 @@
                                     </div>
                                 </div>
                                 <hr>
-                                <li class="d-flex align-items-center fw-lighter my-2">
-                                    <a href="{{ route('home') }}">
-                                        <button class="border-0 bg-transparent ps-2 fw-light fs-6" type="button"><i class="fa-sharp fa-solid fa-house"></i> Dashboard </button>
-                                    </a>
-                                </li>
-                                <li class="d-flex align-items-center fw-lighter my-2">
-                                    <i class="fa-regular fa-heart"></i>
-                                    <button class="border-0 bg-transparent ps-2 fw-light fs-6" type="button">FAVORITES</button>
-                                </li>
-                                <li class="d-flex align-items-center my-2"><i
-                                        class="fa-regular fa-circle-down"></i><button
-                                        class="border-0 bg-transparent ps-2 fw-light" type="button">DOWNLOADS</button>
-                                </li>
-                                <li class="d-flex align-items-center my-2"><i class="fa-regular fa-user"></i><button
+
+                                <a href="{{ route('home') }}" class="text-decoration-none text-dark">
+                                    <li class="d-flex align-items-center fw-lighter my-2">
+                                        <i class="fa fa-home"></i>
+                                        <button class="border-0 bg-transparent ps-2 fw-light fs-6" type="button">Home</button>
+                                    </li>
+                                </a>
+                                <a href="{{ route('home') }}" class="text-decoration-none text-dark">
+                                    <li class="d-flex align-items-center fw-lighter my-2">
+                                        <i class="fa-regular fa-circle-down"></i>
+                                        <button class="border-0 bg-transparent ps-2 fw-light fs-6" type="button">Your Downloads</button>
+                                    </li>
+                                </a>
+                                {{-- <li class="d-flex align-items-center my-2"><i class="fa-regular fa-user"></i><button
                                         class="border-0 bg-transparent ps-2 fw-light fs-6"
                                         type="button">FOLLOWING</button>
                                 </li>
                                 <li class="d-flex align-items-center my-2"><i class="fa-solid fa-grip"></i><button
                                         class="border-0 bg-transparent ps-2 fw-light fs-6"
                                         type="button">COLLECTIONS</button>
-                                </li>
-                                <hr>
-
-                                <li class="d-flex align-items-center my-2"><i class="fa-solid fa-laptop"></i><button
+                                </li> --}}
+                                
+                                {{-- <li class="d-flex align-items-center my-2"><i class="fa-solid fa-laptop"></i><button
                                         class="border-0 bg-transparent ps-2 fw-light"
                                         type="button fs-6">DEVICES</button>
                                 </li>
                                 <li class="d-flex align-items-center my-2"><i
                                         class="fa-regular fa-credit-card"></i><button
                                         class="border-0 bg-transparent ps-2 fw-light" type="button">MY
-                                        SUBSCRIPTION</button></li>
+                                        SUBSCRIPTION</button></li> --}}
                                 <li class="d-flex align-items-center my-2"><i class="fa-solid fa-headset"></i><button
                                         class="border-0 bg-transparent ps-2 fw-light"
-                                        type="button fs-6">SUPPORT</button>
+                                        type="button fs-6">Support</button>
                                 </li>
                                 <hr>
                                 <li class="d-flex align-items-center my-2">

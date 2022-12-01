@@ -44,7 +44,7 @@ active
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($files as $file)
+                            @forelse ($files as $file)
                                 <tr class="border-bottom align-middle">
                                     <td>
                                         <img width="80" src="{{ Storage::disk('s3')->url($file->thumbnail) }}" alt="not found">
@@ -72,7 +72,11 @@ active
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @empty
+                            <tr class="text-center text-danger">
+                                <td colspan="50">No Data to Show</td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                     {{ $files->links() }}

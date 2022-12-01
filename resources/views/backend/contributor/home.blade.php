@@ -284,13 +284,59 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr class="fw-bolder text-muted bg-light">
-                                <th class="ps-4 rounded-start">File Name</th>
+                                <th class="ps-4 rounded-start">Rank</th>
+                                <th>File Name</th>
+                                <th class="rounded-end"># of Download</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($tops as $top)
+                                <tr class="border-bottom align-middle">
+                                    <td>
+                                        @if ($loop->index == 0)
+                                            <img src="{{ asset('dashboard_assets/media/badges/1.png') }}" alt="not found" width="40">
+                                        @elseif ($loop->index == 1)
+                                            <img src="{{ asset('dashboard_assets/media/badges/2.png') }}" alt="not found" width="40">
+                                        @else
+                                            <img src="{{ asset('dashboard_assets/media/badges/3.png') }}" alt="not found" width="40">
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('item.details', App\Models\File::find($top->file_id)->slug) }}" target="_blank">{{ App\Models\File::find($top->file_id)->title }}</a>
+                                    </td>
+                                    <td>{{ $top->total }}</td>
+
+                                </tr>
+                            @empty
+                                <tr class="text-center border-bottom align-middle text-danger">
+                                    <td colspan="50">Nothing to show here</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    Top 3 Downloader Of Your Files
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="fw-bolder text-muted bg-light">
+                                <th class="ps-4 rounded-start">Downloader Name</th>
                                 <th># of Download</th>
                                 <th class="rounded-end">Rank</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($tops as $top)
+                            {{-- @forelse ($tops as $top)
                                 <tr class="border-bottom align-middle">
                                     <td>
                                         <a href="{{ route('item.details', App\Models\File::find($top->file_id)->slug) }}" target="_blank">{{ App\Models\File::find($top->file_id)->title }}</a>
@@ -299,8 +345,10 @@
                                     <td>{{ $loop->index + 1 }}</td>
                                 </tr>
                             @empty
-
-                            @endforelse
+                                <tr class="text-center border-bottom align-middle text-danger">
+                                    <td colspan="50">Nothing to show here</td>
+                                </tr>
+                            @endforelse --}}
                         </tbody>
                     </table>
                 </div>
