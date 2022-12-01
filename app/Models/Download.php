@@ -9,4 +9,9 @@ class Download extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    function file()
+    {
+        return $this->hasOne(File::class, 'id', 'file_id');
+    }
 }

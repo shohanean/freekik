@@ -100,7 +100,7 @@
                                         <button class="border-0 bg-transparent ps-2 fw-light fs-6" type="button">Home</button>
                                     </li>
                                 </a>
-                                <a href="{{ route('home') }}" class="text-decoration-none text-dark">
+                                <a href="{{ route('your.downloads') }}" class="text-decoration-none text-dark">
                                     <li class="d-flex align-items-center fw-lighter my-2">
                                         <i class="fa-regular fa-circle-down"></i>
                                         <button class="border-0 bg-transparent ps-2 fw-light fs-6" type="button">Your Downloads</button>
@@ -114,7 +114,7 @@
                                         class="border-0 bg-transparent ps-2 fw-light fs-6"
                                         type="button">COLLECTIONS</button>
                                 </li> --}}
-                                
+
                                 {{-- <li class="d-flex align-items-center my-2"><i class="fa-solid fa-laptop"></i><button
                                         class="border-0 bg-transparent ps-2 fw-light"
                                         type="button fs-6">DEVICES</button>

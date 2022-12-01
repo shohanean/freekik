@@ -133,6 +133,14 @@
 										<span class="menu-title">Profile</span>
 									</a>
 								</div>
+								<div class="menu-item">
+									<a class="menu-link @yield('your.downloads')" href="{{ route('your.downloads') }}">
+										<span class="menu-icon">
+                                            <i class="far fa-arrow-alt-circle-down"></i>
+										</span>
+										<span class="menu-title">Your Downloads</span>
+									</a>
+								</div>
                                 @can('reviewer access')
                                 <div class="menu-item">
 									<div class="menu-content pt-8 pb-2">

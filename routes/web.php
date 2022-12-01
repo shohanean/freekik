@@ -63,6 +63,7 @@ Route::get('auth/google/callback', [SocialController::class, 'loginWithGoogle'])
 
 Route::middleware(['auth'])->group(function () {
     //Profile Routes
+    Route::get('your/downloads', [ProfileController::class, 'your_downloads'])->name('your.downloads');
     Route::resource('profile', ProfileController::class);
 
     //Backup Routes

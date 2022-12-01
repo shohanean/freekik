@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Download;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -90,5 +91,13 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function your_downloads()
+    {
+        $downloads = Download::where('user_id', auth()->id())->latest()->paginate(10);
+        return view('backend.others.your_downloads', compact(
+            'downloads'
+        ));
     }
 }
