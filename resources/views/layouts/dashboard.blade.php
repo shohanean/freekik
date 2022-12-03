@@ -138,7 +138,9 @@
 										<span class="menu-icon">
                                             <i class="far fa-arrow-alt-circle-down"></i>
 										</span>
-										<span class="menu-title">Your Downloads</span>
+										<span class="menu-title">
+                                            Your Downloads
+                                        </span>
 									</a>
 								</div>
                                 @can('reviewer access')

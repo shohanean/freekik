@@ -14,4 +14,8 @@ class Category extends Model
     {
         return $this->hasOne(User::class, 'id', 'added_by');
     }
+    public function file()
+    {
+        return $this->hasMany(File::class, 'category_id', 'id');
+    }
 }

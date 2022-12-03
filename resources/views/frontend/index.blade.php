@@ -214,104 +214,23 @@
         </div>
 
         <div class="row pt-4">
-
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="box">
-                    <a href="#">
-                        <img src="{{ asset('app_assets') }}/images/i-1.jpg" alt="">
-                        <div class="box__title">
-                            <h6>Nature</h6>
-                            <p>6 photos</p>
-                        </div>
-                    </a>
+            @forelse ($categories as $category)
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="box">
+                        <a href="{{ route('category.details', $category->slug) }}">
+                            <img src="{{ Storage::disk('s3')->url($category->category_image) }}" alt="not found">
+                            <div class="box__title">
+                                <h6>{{ $category->name }}</h6>
+                                <p>{{ $category->file->where('status', 'approved')->count() }} files</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="box">
-                    <a href="#">
-                        <img src="{{ asset('app_assets') }}/images/i-1.jpg" alt="">
-                        <div class="box__title">
-                            <h6>Sport</h6>
-                            <p>3 photos</p>
-                        </div>
-                    </a>
+            @empty
+                <div class="alert alert-info">
+                    Nothing to show
                 </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="box">
-                    <a href="#">
-                        <img src="{{ asset('app_assets') }}/images/i-2.jpg" alt="">
-                        <div class="box__title">
-                            <h6>Architecture</h6>
-                            <p>2 photos</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="box">
-                    <a href="#">
-                        <img src="{{ asset('app_assets') }}/images/i-3.jpg" alt="">
-                        <div class="box__title">
-                            <h6>Technology</h6>
-                            <p>7 photos</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="box">
-                    <a href="#">
-                        <img src="{{ asset('app_assets') }}/images/i-4.jpg" alt="">
-                        <div class="box__title">
-                            <h6>People</h6>
-                            <p>1 photos</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="box">
-                    <a href="#">
-                        <img src="{{ asset('app_assets') }}/images/i-5.jpg" alt="">
-                        <div class="box__title">
-                            <h6>Meal</h6>
-                            <p>8 photos</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="box">
-                    <a href="#">
-                        <img src="{{ asset('app_assets') }}/images/i-6.jpg" alt="">
-                        <div class="box__title">
-                            <h6>Cars</h6>
-                            <p>12 photos</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="box">
-                    <a href="#">
-                        <img src="{{ asset('app_assets') }}/images/i-7.jpg" alt="">
-                        <div class="box__title">
-                            <h6>Cars</h6>
-                            <p>12 photos</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-
-
+            @endforelse
         </div>
     </div>
 </section>

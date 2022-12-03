@@ -28,11 +28,15 @@
                                 {{-- <button type="button" class="btn btn-sm me-2 my-2 web-follow-btn fw-semibold px-4 py-2">
                                     <i class="fa-solid fa-folder-plus pe-2"></i> Collect
                                 </button> --}}
-                                <a href="http://www.facebook.com/sharer.php?u={{ url()->full() }}" target="_blank" class="bg-primary text-light btn btn-sm me-2 my-2 web-follow-btn fw-semibold px-4 py-2 float-end">
+                                <a style="background: #0D8CF1" href="http://www.facebook.com/sharer.php?u={{ url()->full() }}" target="_blank" class="text-light btn btn-sm me-2 my-2 web-follow-btn fw-semibold px-4 py-2 float-end">
                                     <i class="fa-brands fa-facebook pe-2"></i> fb
                                 </a>
 
-                                <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ url()->full() }}" target="_blank" class="bg-dark text-light btn btn-sm me-2 my-2 web-follow-btn fw-semibold px-4 py-2 float-end">
+                                <a style="background: #1C96E8" href="" target="_blank" class="text-light btn btn-sm me-2 my-2 web-follow-btn fw-semibold px-4 py-2 float-end">
+                                    <i class="fa-brands fa-twitter pe-2"></i> tw
+                                </a>
+
+                                <a style="background: #0C61BF" href="http://www.linkedin.com/shareArticle?mini=true&url={{ url()->full() }}" target="_blank" class="text-light btn btn-sm me-2 my-2 web-follow-btn fw-semibold px-4 py-2 float-end">
                                     <i class="fa-brands fa-linkedin pe-2"></i> ln
                                 </a>
                                 {{-- <a href="http://www.facebook.com/sharer.php?u={{ url()->full() }}" target="_blank" class="bg-primary text-light btn btn-sm me-2 my-2 web-follow-btn fw-semibold px-4 py-2 float-end">

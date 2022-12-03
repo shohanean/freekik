@@ -47,7 +47,7 @@
                                         <img width="80" src="{{ Storage::disk('s3')->url($download->file->thumbnail) }}" alt="not found">
                                     </td>
                                     <td>
-                                        <a href="{{ route('item.details', $download->file->slug) }}" target="_blank">{{ $download->file->title }}</a>
+                                        <a href="{{ route('item.details', $download->file->slug) }}" target="_blank">{{ $download->file->title }} <i class="fas fa-external-link-alt"></i></a>
                                     </td>
                                     <td>{{ $download->created_at->diffForHumans() }}</td>
                                 </tr>
