@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg py-3" style="background-color: #6e44fa;" id="navbar" aria-label="Main navigation">
+    <nav class="navbar navbar-expand-lg py-1" style="background-color: #6f40f9;" id="navbar" aria-label="Main navigation">
         <div class="container">
             <a class="navbar-brand fw-semibold text-white d-flex fs-3 align-items-center" href="{{ route('index') }}"><i
                     class="fa-brands fa-connectdevelop pe-2 fs-1" style="color: white;"></i>FreeKik</a>
