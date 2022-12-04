@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Download;
 use App\Models\File;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 class FrontendController extends Controller
@@ -60,6 +61,11 @@ class FrontendController extends Controller
             ]);
         }
         return Storage::disk('s3')->download($file->main);
+    }
+    public function contributor($user_slug)
+    {
+        $contributor = User::with('file')->where('slug', $user_slug)->firstOrFail();
+        return view('frontend.contributor', compact('contributor'));
     }
     public function contact()
     {

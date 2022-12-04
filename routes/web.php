@@ -30,6 +30,7 @@ Route::get('category/details/{category_slug}', [FrontendController::class, 'cate
 Route::get('item/{file_slug}', [FrontendController::class, 'item_details'])->name('item.details');
 Route::post('download/{file_slug}', [FrontendController::class, 'download'])->name('download');
 Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
+Route::get('contributor/{user_slug}', [FrontendController::class, 'contributor'])->name('contributor');
 
 Auth::routes();
 
