@@ -24,6 +24,7 @@
         referrerpolicy="no-referrer"/>
         @livewireStyles
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -954,6 +955,9 @@
         integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ=="
         crossorigin="anonymous"
         referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="{{ asset('dashboard_assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
 		<!--end::Page 3rd Party Javascript-->
 
 		<!--end::Javascript-->

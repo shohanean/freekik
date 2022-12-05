@@ -59,7 +59,7 @@
                             </h5>
                             <hr>
                             <p>
-                                {{ $file->description }}
+                                {!! $file->description !!}
                             </p>
                             <div class="card-body bg-light py-2 rounded">
                                 <h6 class="fw-semibold web-text-black">Related tags</h6>
@@ -74,6 +74,12 @@
                 <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="card m-auto ms-md-auto mb-4" style="width: 22rem;">
                         <div class="card-body">
+                            <h6 class="card-title">
+                                Category Name
+                            </h6>
+                            <p class="card-text">
+                                <span class="badge bg-secondary">{{ $file->category->name }}</span>
+                            </p>
                             <h6 class="card-title">
                                 Upload Date
                             </h6>

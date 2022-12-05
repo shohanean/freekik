@@ -13,7 +13,7 @@
                     <div class="input-group-prepend w-25">
                         <button class="btn border-0 dropdown-toggle px-4 d-none d-md-block"
                             id="header-dropdown-btn" type="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">Images,
+                            aria-expanded="false">Files,
                             Free</button>
                         <div class="dropdown-menu mt-3 w-25" id="header-dropdown-menus">
                             <div class="px-3">
@@ -45,7 +45,7 @@
                                     <input class="form-check-input" type="checkbox" value=""
                                         id="flexCheckChecked">
                                     <label class="form-check-label text-warning" for="flexCheckChecked">
-                                        <i class="fa-solid fa-crown"></i> Primium
+                                        <i class="fa-solid fa-crown"></i> Premium
                                     </label>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="web-search d-flex align-items-center">
                         <input type="text" class="form-control border-0 shadow-none bg-transparent"
-                            aria-label="Text input with dropdown button" placeholder="Search all images"
+                            aria-label="Text input with dropdown button" placeholder="Search all files"
                             style="width: 80%;">
                         <i class="fa-solid fa-magnifying-glass web-gray fs-5" style="width: 20%;"></i>
                     </div>

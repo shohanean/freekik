@@ -58,7 +58,7 @@ active
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Description</label>
-                        <textarea name="description" class="form-control mb-4"rows="4"></textarea>
+                        <textarea id="description" name="description" class=" mb-4"rows="4"></textarea>
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
@@ -77,7 +77,7 @@ active
                     <!--end::Input group-->
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
-                        <label class="required form-label">Tags (Maximum three tags)</label>
+                        <label class="required form-label">Tags (Maximum five tags)</label>
                         <input type="text" name="tags" id="tags" class="mb-4">
                     </div>
                     <!--end::Input group-->
@@ -102,9 +102,21 @@ active
 @section('footer_scripts')
 <script>
     $(document).ready(function() {
+        // ClassicEditor
+        // .create( document.querySelector( '#summernote' ) )
+        // .catch( error => {
+        //     console.error( error );
+        // } );
+        // $('#summernote').summernote();
+
+
+        tinymce.init({
+            selector: 'textarea#description',
+
+        });
         $('#tags').selectize({
             delimiter: ',',
-            maxItems: 3,
+            maxItems: 5,
             persist: false,
             create: function(input) {
                 return {
