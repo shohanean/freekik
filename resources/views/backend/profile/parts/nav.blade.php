@@ -18,7 +18,7 @@
                     <div class="d-flex flex-column">
                         <!--begin::Name-->
                         <div class="d-flex align-items-center mb-2">
-                            <a href="#" class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">{{ $name }}</a>
+                            <a href="{{ route('contributor', auth()->user()->slug) }}" target="_blank" class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">{{ $name }}</a>
                             @isset(auth()->user()->email_verified_at)
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen026.svg-->
                                 <span class="svg-icon svg-icon-1 svg-icon-primary">

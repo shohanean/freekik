@@ -11,8 +11,7 @@
                     <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
                         <div class="col">
                             <div class="d-flex align-items-center mt-4">
-                                <a href="https://www.figma.com/"
-                                    class="d-block d-flex my-2 align-items-center text-decoration-none web-gray">
+                                <a href="{{ route('contributor', $file->user->slug) }}" target="_blank" class="d-block d-flex my-2 align-items-center text-decoration-none web-gray">
                                     <img src="{{ ($file->user->avatar) ? asset($file->user->avatar) : Avatar::create($file->user->name)->toBase64() }}" class="rounded-circle me-2" alt="author photo missing" style="width: 30px; height: 30px;">
                                     <p class="web-text-color mb-0 fw-semibold">{{ $file->user->name }} <br><span class="fw-light web-gray">{{ $other_files->count() }} files</span></p>
                                 </a>
@@ -108,7 +107,11 @@
                             </h6>
                             <p class="card-text">
                                 <i class="fa fa-clock"></i>
-                                {{ $downloads->last()->created_at->diffForHumans() }}
+                                @if ($downloads->last())
+                                    {{ $downloads->last()->created_at->diffForHumans() }}
+                                @else
+                                    N/A
+                                @endif
                             </p>
                         </div>
                     </div>
@@ -170,7 +173,7 @@
                                                 {{ $other_file->title }}
                                             </p>
                                         </a>
-                                        <a href="https://www.figma.com/" class="d-block text-decoration-none text-white">
+                                        <a href="{{ route('contributor', $file->user->slug) }}" target="_blank" class="d-block text-decoration-none text-white">
                                             <img src="{{ ($other_file->user->avatar) ? asset($other_file->user->avatar) : Avatar::create($other_file->user->name)->toBase64() }}" class="rounded-circle me-2" alt="suzayet" style="width: 30px; height: 30px;">{{ $other_file->user->name }}
                                         </a>
                                     </div>

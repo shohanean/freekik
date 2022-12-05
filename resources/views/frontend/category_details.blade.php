@@ -247,8 +247,8 @@
                                                 {{ $file->title }}
                                             </p>
                                         </a>
-                                        <a href="https://www.figma.com/" class="d-block text-decoration-none text-white">
-                                            <img src="{{ asset('app_assets') }}/images/suzayet.jpg" class="rounded-circle me-2" alt="suzayet" style="width: 30px; height: 30px;">
+                                        <a href="{{ route('contributor', $file->user->slug) }}" class="d-block text-decoration-none text-white">
+                                            <img src="{{ ($file->user->avatar) ? asset($file->user->avatar) : Avatar::create($file->user->name)->toBase64() }}" class="rounded-circle me-2" alt="not found" style="width: 30px; height: 30px;">
                                             {{ $file->user->name }}
                                         </a>
                                     </div>

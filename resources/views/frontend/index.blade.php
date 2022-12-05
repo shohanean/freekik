@@ -154,7 +154,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 m-auto text-center">
-                <h2><span class="web-text-color">Explore</span> trending categories on Freepik</h2>
+                <h2><span class="web-text-color">Explore</span> trending categories on Freekik</h2>
                 <p>Check what’s popular on Freepik and make your project look trendy and professional.</p>
             </div>
         </div>
