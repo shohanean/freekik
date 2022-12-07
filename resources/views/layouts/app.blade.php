@@ -71,7 +71,7 @@
                             <ul class="dropdown-menu dropdown-menu-lg-end p-3">
                                 <div class="d-flex align-items-center">
                                     <div class="info_user">
-                                        <a href="{{ route('register') }}" class="btn btn-primary fw-light mt-2">Register/Login</a>
+                                        <a href="{{ route('login') }}" class="btn btn-primary fw-light mt-2">Login/Register</a>
                                     </div>
                                 </div>
                             </ul>
