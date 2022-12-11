@@ -233,6 +233,7 @@
                         </ul>
                     </div>
                 </div>
+                <a class="mt-4" target="_blank" href="https://www.sslcommerz.com/" title="SSLCommerz" alt="SSLCommerz"><img style="width:100%;height:auto;" src="https://securepay.sslcommerz.com/public/image/SSLCommerz-Pay-With-logo-All-Size-03.png" /></a>
             </div>
         </div>
     </footer>
@@ -240,6 +241,7 @@
     <script src="{{ asset('app_assets') }}/js/bootstrap.bundle.js"></script>
     <script src="{{ asset('app_assets') }}/js/slick.min.js"></script>
     <script src="{{ asset('app_assets') }}/js/app.js"></script>
+    @stack('scripts')
 </body>
 
 </html>

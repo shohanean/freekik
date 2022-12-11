@@ -38,11 +38,18 @@ active
                             <div class="col-xxl-7 pl-xxl-11">
                                 <h2 class="font-weight-bolder text-dark mb-7" style="font-size: 32px;">
                                     {{ $file->title }}
+                                    <a href="{{ route('item.details', $file->slug) }}" target="_blank">
+                                        <i class="font-weight-bolder fa fa-external-link-alt"></i>
+                                    </a>
                                 </h2>
-                                <div class="font-size-h2 mb-7 text-dark-50">From
-                                <span class="text-info font-weight-boldest ml-2">{{ $file->category->name }}</span></div>
+                                <div class="font-size-h2 mb-7 text-dark-50">
+                                    From
+                                    <a href="{{ route('category.details', $file->category->slug) }}" target="_blank">
+                                        <span class="text-info font-weight-boldest ml-2">{{ $file->category->name }}</span>
+                                    </a>
+                                </div>
                                 <div class="line-height-xl">
-                                    {{ $file->description }}
+                                    {!! $file->description !!}
                                 </div>
                             </div>
                         </div>
@@ -70,6 +77,21 @@ active
                                 <div class="mb-8 d-flex flex-column">
                                     <span class="text-dark font-weight-bold mb-4">#Uploaded</span>
                                     <span class="text-muted font-weight-bolder font-size-lg">{{ $file->created_at->diffForHumans() }}</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="mb-8 d-flex flex-column">
+                                    <span class="text-dark font-weight-bold mb-4">#File Type</span>
+                                    <span class="text-muted font-weight-bolder font-size-lg">
+                                        <i class="{{ ($file->file_type == 1) ? 'text-primary fas fa-gift':'text-warning fas fa-crown' }}"></i>
+                                        {{ ($file->file_type == 1) ? 'Free':'Premium' }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="mb-8 d-flex flex-column">
+                                    <span class="text-dark font-weight-bold mb-4">#Price</span>
+                                    <span class="text-muted font-weight-bolder font-size-lg">৳{{ $file->price }}</span>
                                 </div>
                             </div>
                             <h2 class="text-center mb-5 py-5 bg-light-warning">Uploader Information</h2>

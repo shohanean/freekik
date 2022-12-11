@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Route,Auth};
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\
     {
         FrontendController,
@@ -24,7 +25,6 @@ use App\Http\Controllers\
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('category/details/{category_slug}', [FrontendController::class, 'category_details'])->name('category.details');
 Route::get('item/{file_slug}', [FrontendController::class, 'item_details'])->name('item.details');
@@ -33,7 +33,6 @@ Route::get('contact', [FrontendController::class, 'contact'])->name('contact');
 Route::get('contributor/{user_slug}', [FrontendController::class, 'contributor'])->name('contributor');
 
 Auth::routes();
-
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/import', [HomeController::class, 'import'])->name('import');
@@ -86,3 +85,16 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('upload', UploadController::class);
 });
 
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END

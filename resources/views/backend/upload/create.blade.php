@@ -43,7 +43,7 @@ active
                             <!--begin::Input group-->
                             <div class="mb-4 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">File Type</label>
-                                <select name="" class="form-control mb-4">
+                                <select name="file_type" class="form-control mb-4">
                                     <option value=""> - Select One File Type - </option>
                                     <option value="1">Free</option>
                                     <option value="2">Premium</option>

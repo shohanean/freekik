@@ -17,17 +17,19 @@ class FrontendController extends Controller
         $files_count = File::where([
             'status' => 'approved'
         ])->count();
-        if($files_count < 9){
+        if ($files_count < 9) {
             $rand = $files_count;
-        }else{
+        } else {
             $rand = 9;
         }
         $files = File::where([
             'status' => 'approved'
         ])->get()->random($rand);
+
         return view('frontend.index', [
             'categories' => Category::latest()->get(),
-            'files' => $files
+            'files' => $files,
+            'file_count' => File::where(['status' => 'approved'])->count(),
         ]);
     }
     public function category_details($category_slug)
@@ -44,23 +46,27 @@ class FrontendController extends Controller
     {
         $file = File::where('slug', $file_slug)->firstOrFail();
         $downloads = Download::where('file_id', $file->id)->get();
-        $other_files = File::where(['user_id' => $file->user_id, 'status' => 'approved'])->where('slug', '!=',$file_slug)->get();
+        $other_files = File::where(['user_id' => $file->user_id, 'status' => 'approved'])->where('slug', '!=', $file_slug)->get();
         return view('frontend.item_details', compact('file', 'other_files', 'downloads'));
     }
     public function download($file_slug)
     {
         $file = File::where('slug', $file_slug)->first();
-        if(!Download::where([
+        if (!Download::where([
             'user_id' => auth()->id(),
             'file_id' => $file->id
-        ])->exists()){
+        ])->exists()) {
             Download::create([
                 'user_id' => auth()->id(),
                 'file_id' => $file->id,
                 'contributor_id' => $file->user_id
             ]);
         }
-        return Storage::disk('s3')->download($file->main);
+        $temporaryUrl = Storage::disk('s3')->temporaryUrl(
+            $file->main,
+            now()->addMinutes(5)
+        );
+        return redirect($temporaryUrl);
     }
     public function contributor($user_slug)
     {

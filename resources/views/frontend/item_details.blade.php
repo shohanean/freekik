@@ -124,18 +124,40 @@
                     <div class="card m-auto ms-md-auto" style="width: 22rem;">
                         <div class="card-body">
                             @auth
-                            <h5 class="card-title"><i class="fa-solid fa-crown text-warning"></i> <span class="text-warning">Premium</span> File</h5>
+                            <h5 class="card-title">
+                                @if ($file->file_type == 1)
+                                    <i class="fa-solid fa-gift text-primary"></i> <span class="text-primary">Free</span>
+                                @else
+                                    <i class="fa-solid fa-crown text-warning"></i> <span class="text-warning">Premium</span>
+                                @endif
+                                File
+                            </h5>
+                            <div class="row m-4">
+                                <div class="col-6 m-auto">
+                                    <div class="p-3 text-center" style="font-size: 35px; border: 1px dotted rgb(173, 169, 169)">
+                                        ৳{{ $file->price }}
+                                    </div>
+                                </div>
+                            </div>
                             <p class="card-text">
                                 Click below button to start downloading
                             </p>
+                            @if ($file->file_type == 1)
                             <div class="download text-center">
                                 <form action="{{ route('download', $file->slug) }}" method="POST">
                                     @csrf
                                     <button type="submit" class="btn bg-success fw-semibold px-5 py-3 m-auto text-white">
-                                        <span class="fw-light">Download</span>
+                                        <span class="fw-light">Free Download</span>
                                     </button>
                                 </form>
                             </div>
+                            @else
+                            <div class="text-center m-3">
+                                <button class="btn border border-primary">
+                                    Pay with <a target="_blank" href="{{ url('example1') }}" title="SSLCommerz" alt="SSLCommerz"><img style="width:150px;height:auto;" src="https://securepay.sslcommerz.com/public/image/sslcommerz.png" /></a>
+                                </button>
+                            </div>
+                            @endif
                             {{-- <hr>
                             <div class="row">
                                 <div class="col-8">

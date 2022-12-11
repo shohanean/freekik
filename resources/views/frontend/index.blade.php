@@ -154,7 +154,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-10 m-auto text-center">
-                <h2><span class="web-text-color">Explore</span> trending categories on Freekik</h2>
+                <h2><span class="web-text-color" id="s_counter">{{ $file_count }}</span> trending categories on Freekik</h2>
                 <p>Check what’s popular on Freepik and make your project look trendy and professional.</p>
             </div>
         </div>
@@ -345,3 +345,7 @@
     </div>
 </section>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('app_assets') }}/js/custom.js"></script>
+@endpush
