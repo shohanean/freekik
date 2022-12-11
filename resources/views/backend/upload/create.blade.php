@@ -38,17 +38,35 @@ active
 
                 <form action="{{ route('upload.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <!--begin::Input group-->
-                    <div class="mb-4 fv-row fv-plugins-icon-container">
-                        <label class="required form-label">Category Name</label>
-                        <select name="category_id" class="form-control mb-4">
-                            <option value=""> - Select One Category - </option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="row">
+                        <div class="col-6">
+                            <!--begin::Input group-->
+                            <div class="mb-4 fv-row fv-plugins-icon-container">
+                                <label class="required form-label">File Type</label>
+                                <select name="" class="form-control mb-4">
+                                    <option value=""> - Select One File Type - </option>
+                                    <option value="1">Free</option>
+                                    <option value="2">Premium</option>
+                                </select>
+                            </div>
+                            <!--end::Input group-->
+                        </div>
+                        <div class="col-6">
+                            <!--begin::Input group-->
+                            <div class="mb-4 fv-row fv-plugins-icon-container">
+                                <label class="required form-label">Category Name</label>
+                                <select name="category_id" class="form-control mb-4">
+                                    <option value=""> - Select One Category - </option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!--end::Input group-->
+                        </div>
                     </div>
-                    <!--end::Input group-->
+
+
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Title</label>
@@ -58,7 +76,7 @@ active
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Description</label>
-                        <textarea id="description" name="description" class=" mb-4"rows="4"></textarea>
+                        <textarea id="description" name="description" class="mb-4"></textarea>
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
@@ -112,7 +130,16 @@ active
 
         tinymce.init({
             selector: 'textarea#description',
-
+            menu: {
+                file: { title: 'File', items: 'newdocument restoredraft | preview | print ' },
+                edit: { title: 'Edit', items: 'undo redo | cut copy paste | selectall | searchreplace' },
+                view: { title: 'View', items: 'code | visualaid visualchars visualblocks | spellchecker | preview fullscreen' },
+                insert: { title: 'Insert', items: 'image link media template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime' },
+                format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript codeformat | formats blockformats fontformats fontsizes align lineheight | forecolor backcolor | removeformat' },
+                tools: { title: 'Tools', items: 'spellchecker spellcheckerlanguage | code wordcount' },
+                table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },
+                help: { title: 'Help', items: 'help' }
+            }
         });
         $('#tags').selectize({
             delimiter: ',',
