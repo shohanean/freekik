@@ -81,6 +81,23 @@
                                 <span class="badge bg-secondary">{{ $file->category->name }}</span>
                             </p>
                             <h6 class="card-title">
+                                File Type
+                            </h6>
+                            <p class="card-text">
+                                @if ($file->file_type == 1)
+                                    <i class="fa-solid fa-gift text-primary"></i> <span class="text-primary">Free</span>
+                                @else
+                                    <i class="fa-solid fa-crown text-warning"></i> <span class="text-warning">Premium</span>
+                                @endif
+                            </p>
+                            <h6 class="card-title">
+                                Price
+                            </h6>
+                            <p class="card-text">
+
+                                ৳{{ $file->price }}
+                            </p>
+                            <h6 class="card-title">
                                 Upload Date
                             </h6>
                             <p class="card-text">
@@ -153,9 +170,12 @@
                             </div>
                             @else
                             <div class="text-center m-3">
-                                <button class="btn border border-primary">
-                                    Pay with <a target="_blank" href="{{ url('example1') }}" title="SSLCommerz" alt="SSLCommerz"><img style="width:150px;height:auto;" src="https://securepay.sslcommerz.com/public/image/sslcommerz.png" /></a>
-                                </button>
+                                <form action="{{ url('pay') }}" method="POST">
+                                    @csrf
+                                    <button class="btn border border-primary">
+                                        Pay with <img style="width:150px;height:auto;" src="https://securepay.sslcommerz.com/public/image/sslcommerz.png" />
+                                    </button>
+                                </form>
                             </div>
                             @endif
                             {{-- <hr>
@@ -171,7 +191,14 @@
                                 </div>
                             </div> --}}
                             @else
-                            <h5 class="card-title"><i class="fa-solid fa-crown text-warning"></i> <span class="text-warning">Premium</span> File</h5>
+                            <h5 class="card-title">
+                                @if ($file->file_type == 1)
+                                    <i class="fa-solid fa-gift text-primary"></i> <span class="text-primary">Free</span>
+                                @else
+                                    <i class="fa-solid fa-crown text-warning"></i> <span class="text-warning">Premium</span>
+                                @endif
+                                File
+                            </h5>
                             <p class="card-text">
                                 Unlock this file and get unlimited access to over {{ App\Models\File::count() }} Premium files
                             </p>

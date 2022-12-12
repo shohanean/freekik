@@ -13,26 +13,21 @@
                     <div class="input-group-prepend w-25">
                         <button class="btn border-0 dropdown-toggle px-4 d-none d-md-block"
                             id="header-dropdown-btn" type="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">Files,
-                            Free</button>
+                            aria-expanded="false">
+                            Categories
+                        </button>
                         <div class="dropdown-menu mt-3 w-25" id="header-dropdown-menus">
                             <div class="px-3">
-                                <div class="form-check">
-                                    <input class="form-check-input shadow-none" type="radio"
-                                        name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Images
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input shadow-none" type="radio"
-                                        name="flexRadioDefault" id="flexRadioDefault2">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Collections
-                                    </label>
-                                </div>
+                                @foreach ($categories as $cate)
+                                    <div class="form-check">
+                                        <input class="form-check-input shadow-none" type="radio" name="search_dropdown" id="search_dropdown_{{ $cate->id }}">
+                                        <label class="form-check-label" for="search_dropdown_{{ $cate->id }}">
+                                            {{ $cate->name }}
+                                        </label>
+                                    </div>
+                                @endforeach
                             </div>
-                            <hr>
+                            {{-- <hr>
                             <div class="px-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value=""
@@ -79,7 +74,7 @@
                                         Icons
                                     </label>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="web-search d-flex align-items-center">
@@ -324,6 +319,34 @@
         </div>
     </div>
 </section>
+<!-- gallery start here -->
+@if ($suggested_files->count() > 0)
+<section id="gallery" class="mt-5">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-lg-10 m-auto text-center">
+                <h2><span class="web-text-color">Files you might like to see</span></h2>
+                <p>Check what you have liked so far.</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach ($suggested_files as $file)
+            <div class="col-lg-2">
+                <a href="{{ route('item.details', $file->slug) }}">
+                    <figure class="position-relative gallery-overly">
+                        <img src="{{ Storage::disk('s3')->url($file->thumbnail) }}" class="img-fluid w-100" style="height: 215px;" alt="">
+                        <p class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
+                            <span class="badge bg-dark fw-semibold text-white p-2">{{ Str::limit($file->title, 20) }}</span>
+                        </p>
+                    </figure>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+<!-- gallery end here -->
 <section class="mt-5">
     <div class="container rounded-3 py-4 py-lg-0" style="background-color: #dbebfe">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2">

@@ -217,8 +217,14 @@
             </div>
             <!-- search keywords end here -->
 
-            <div
-                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4 border-bottom">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-4 border-bottom">
+                <div>
+                    <h3>
+                        <i class="fas fa-angle-double-right"></i>
+                        {{ $category->name }}
+                    </h3>
+                    <p>{{ $category->description }}</p>
+                </div>
                 <div class="btn-toolbar mb-2 mb-md-0 ms-auto">
                     <div class="btn-group">
                         <button type="button" class="btn btn-secondary mb-2 dropdown-toggle"

@@ -25,6 +25,11 @@ use App\Http\Controllers\
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('test', [FrontendController::class, 'test'])->name('test');
+// Route::post('success', [FrontendController::class, 'success'])->name('success');
+// Route::post('fail', [FrontendController::class, 'fail'])->name('fail');
+
+
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('category/details/{category_slug}', [FrontendController::class, 'category_details'])->name('category.details');
 Route::get('item/{file_slug}', [FrontendController::class, 'item_details'])->name('item.details');
