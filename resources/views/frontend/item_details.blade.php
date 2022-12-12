@@ -172,6 +172,7 @@
                             <div class="text-center m-3">
                                 <form action="{{ url('pay') }}" method="POST">
                                     @csrf
+                                    <input type="text" name="file_id" value="{{ $file->id }}">
                                     <button class="btn border border-primary">
                                         Pay with <img style="width:150px;height:auto;" src="https://securepay.sslcommerz.com/public/image/sslcommerz.png" />
                                     </button>
