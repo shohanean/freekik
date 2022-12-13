@@ -329,8 +329,36 @@
                 <p>Check what you have liked so far.</p>
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
             @foreach ($suggested_files as $file)
+            <div class="col-lg-2">
+                <a href="{{ route('item.details', $file->slug) }}">
+                    <figure class="position-relative gallery-overly">
+                        <img src="{{ Storage::disk('s3')->url($file->thumbnail) }}" class="img-fluid w-100" style="height: 215px;" alt="">
+                        <p class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
+                            <span class="badge bg-dark fw-semibold text-white p-2">{{ Str::limit($file->title, 20) }}</span>
+                        </p>
+                    </figure>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+<!-- gallery end here -->
+<!-- gallery start here -->
+@if ($recent_view_files->count() > 0)
+<section id="gallery" class="mt-5">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-lg-10 m-auto text-center">
+                <h2><span class="web-text-color">Files you might like to see</span></h2>
+                <p>Check what you have liked so far.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            @foreach ($recent_view_files as $file)
             <div class="col-lg-2">
                 <a href="{{ route('item.details', $file->slug) }}">
                     <figure class="position-relative gallery-overly">

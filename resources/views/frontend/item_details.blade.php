@@ -80,23 +80,28 @@
                             <p class="card-text">
                                 <span class="badge bg-secondary">{{ $file->category->name }}</span>
                             </p>
-                            <h6 class="card-title">
-                                File Type
-                            </h6>
-                            <p class="card-text">
-                                @if ($file->file_type == 1)
-                                    <i class="fa-solid fa-gift text-primary"></i> <span class="text-primary">Free</span>
-                                @else
-                                    <i class="fa-solid fa-crown text-warning"></i> <span class="text-warning">Premium</span>
-                                @endif
-                            </p>
-                            <h6 class="card-title">
-                                Price
-                            </h6>
-                            <p class="card-text">
-
-                                ৳{{ $file->price }}
-                            </p>
+                            <div class="row mb-3">
+                                <div class="col-6">
+                                    <h6 class="card-title">
+                                        File Type
+                                    </h6>
+                                    <p class="card-text">
+                                        @if ($file->file_type == 1)
+                                            <i class="fa-solid fa-gift text-primary"></i> <span class="text-primary">Free</span>
+                                        @else
+                                            <i class="fa-solid fa-crown text-warning"></i> <span class="text-warning">Premium</span>
+                                        @endif
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <h6 class="card-title">
+                                        Price
+                                    </h6>
+                                    <p class="card-text">
+                                        ৳{{ $file->price }}
+                                    </p>
+                                </div>
+                            </div>
                             <h6 class="card-title">
                                 Upload Date
                             </h6>

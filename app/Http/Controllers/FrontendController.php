@@ -36,11 +36,19 @@ class FrontendController extends Controller
         } else {
             $suggested_files = collect();
         }
+
+        if(request()->cookie('recent_views')){
+            $get_recent_view_files = explode('#', request()->cookie('recent_views'));
+            $recent_view_files = File::whereIn('id', $get_recent_view_files)->get();
+        } else {
+            $recent_view_files = collect();
+        }
         return view('frontend.index', [
             'categories' => Category::latest()->get(),
             'files' => $files,
             'file_count' => File::where(['status' => 'approved'])->count(),
-            'suggested_files' => $suggested_files
+            'suggested_files' => $suggested_files,
+            'recent_view_files' => $recent_view_files,
         ]);
     }
     public function category_details($category_slug)
@@ -55,20 +63,20 @@ class FrontendController extends Controller
     }
     public function item_details($file_slug, Request $request)
     {
-        // if (request()->cookie('recent_views')) {
-        //     echo "ase";
-        // } else {
-        //     $names = ['jakir'];
-        //     $names_encode = join('#',$names);
-        //     echo $names_encode;
-        //     print_r(explode('#', $names_encode));
-        //     Cookie::queue(cookie('recent_views', $names, 43800));
-        // }
-
-        // die();
-        // return Cookie::queue(cookie('recent_views', $names, 43800));
-
         $file = File::where('slug', $file_slug)->firstOrFail();
+        if (request()->cookie('recent_views')) {
+            $get_recent_views_id = request()->cookie('recent_views');
+            $get_recent_views_ids = explode('#', $get_recent_views_id);
+            array_unshift($get_recent_views_ids, $file->id);
+            $get_unique_recent_views_ids = array_unique($get_recent_views_ids);
+            $get_slice_recent_views_ids = array_slice($get_unique_recent_views_ids, 0, 6);
+            $recent_views_ids = join('#', $get_slice_recent_views_ids);
+            Cookie::queue(cookie('recent_views', $recent_views_ids, 43800));
+        } else {
+            $recent_views_id = [$file->id];
+            $recent_views_ids = join('#', $recent_views_id);
+            Cookie::queue(cookie('recent_views', $recent_views_ids, 43800));
+        }
         $downloads = Download::where('file_id', $file->id)->get();
         $other_files = File::where(['user_id' => $file->user_id, 'status' => 'approved'])->where('slug', '!=', $file_slug)->get();
         Cookie::queue(cookie('suggest', $file_slug, 43800));
