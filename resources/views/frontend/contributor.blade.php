@@ -16,7 +16,11 @@
                     <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
                         <div class="col">
                             <div class="d-flex align-items-center mt-2" style="padding-left: 160px">
-                                <p class="text-dark mb-0 fw-semibold">{{ Str::title($contributor->name) }} <br><span class="fw-light web-gray">{{ $contributor->file->count() }} files</span></p>
+                                <p class="text-dark mb-0 fw-semibold">{{ Str::title($contributor->name) }} <br>
+                                    <span class="fw-light web-gray">
+                                        {{ $contributor->file->count() }} {{ ($contributor->file->count() > 1) ? Str::plural('File'):'File' }}
+                                    </span>
+                                </p>
                             </div>
                         </div>
                         <div class="col">
@@ -64,7 +68,9 @@
                             </h6>
                             <p class="card-text">
                                 {{ $contributor->email }}
-                                <i class="fa fa-check-circle text-success"></i>
+                                @if ($contributor->email_verified_at)
+                                    <i class="fa fa-check-circle text-success"></i>
+                                @endif
                             </p>
                             <h6 class="card-title">
                                 Contributor Since
@@ -78,6 +84,15 @@
                             <p class="card-text">
                                 <i class="fa fa-download"></i>
                                 {{ App\Models\Download::where('contributor_id', $contributor->id)->count() }}
+                            </p>
+                            <h6 class="card-title">
+                                Your Achievements
+                            </h6>
+                            <p class="card-text">
+                                <img data-toggle="tooltip" data-placement="top" title="Exclusive Contributor" width="30" src="{{ asset('app_assets/images/badge/exclusive.png') }}" alt="not found">
+                                <img data-toggle="tooltip" data-placement="top" title="Holding One Star" width="30" src="{{ asset('app_assets/images/badge/one_star.png') }}" alt="not found">
+                                <img data-toggle="tooltip" data-placement="top" title="Student of Creative IT Institute" width="30" src="{{ asset('app_assets/images/badge/cit.png') }}" alt="not found">
+                                <img data-toggle="tooltip" data-placement="top" title="Holding Black Star" width="30" src="{{ asset('app_assets/images/badge/black_star.png') }}" alt="not found">
                             </p>
                         </div>
                     </div>

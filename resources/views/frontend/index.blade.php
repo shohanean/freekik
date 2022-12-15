@@ -229,7 +229,34 @@
         </div>
     </div>
 </section>
-
+<!-- suggested_files start here -->
+@if ($suggested_files->count() > 0)
+<section id="gallery" class="mt-5">
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col-lg-10 m-auto text-center">
+                <h2><span class="web-text-color">Files you might like to see</span></h2>
+                <p>Check what you have liked so far.</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            @foreach ($suggested_files as $file)
+            <div class="col-lg-2">
+                <a href="{{ route('item.details', $file->slug) }}">
+                    <figure class="position-relative gallery-overly">
+                        <img src="{{ Storage::disk('s3')->url($file->thumbnail) }}" class="img-fluid w-100" style="height: 215px;" alt="">
+                        <p class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
+                            <span class="badge bg-dark fw-semibold text-white p-2">{{ Str::limit($file->title, 20) }}</span>
+                        </p>
+                    </figure>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+@endif
+<!-- suggested_files end here -->
 <section id="choice" class="mt-5">
     <div class="container">
         <div class="row">
@@ -319,42 +346,15 @@
         </div>
     </div>
 </section>
-<!-- gallery start here -->
-@if ($suggested_files->count() > 0)
-<section id="gallery" class="mt-5">
-    <div class="container">
-        <div class="row mb-3">
-            <div class="col-lg-10 m-auto text-center">
-                <h2><span class="web-text-color">Files you might like to see</span></h2>
-                <p>Check what you have liked so far.</p>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            @foreach ($suggested_files as $file)
-            <div class="col-lg-2">
-                <a href="{{ route('item.details', $file->slug) }}">
-                    <figure class="position-relative gallery-overly">
-                        <img src="{{ Storage::disk('s3')->url($file->thumbnail) }}" class="img-fluid w-100" style="height: 215px;" alt="">
-                        <p class="position-absolute position-absolute bottom-0 start-0 p-3 m-0 gallery-item-title">
-                            <span class="badge bg-dark fw-semibold text-white p-2">{{ Str::limit($file->title, 20) }}</span>
-                        </p>
-                    </figure>
-                </a>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endif
-<!-- gallery end here -->
-<!-- gallery start here -->
+
+<!-- recent_view_files start here -->
 @if ($recent_view_files->count() > 0)
 <section id="gallery" class="mt-5">
     <div class="container">
         <div class="row mb-3">
             <div class="col-lg-10 m-auto text-center">
-                <h2><span class="web-text-color">Files you might like to see</span></h2>
-                <p>Check what you have liked so far.</p>
+                <h2><span class="web-text-color">Your recently viewed files</span></h2>
+                <p>Great! your choice is good</p>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -374,7 +374,7 @@
     </div>
 </section>
 @endif
-<!-- gallery end here -->
+<!-- recent_view_files end here -->
 <section class="mt-5">
     <div class="container rounded-3 py-4 py-lg-0" style="background-color: #dbebfe">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2">

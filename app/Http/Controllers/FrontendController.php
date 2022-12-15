@@ -103,7 +103,9 @@ class FrontendController extends Controller
     }
     public function contributor($user_slug)
     {
-        $contributor = User::with('file')->where('slug', $user_slug)->firstOrFail();
+        $contributor = User::with(["file" => function ($q) {
+            $q->where('status','approved');
+        }])->where('slug', $user_slug)->firstOrFail();
         return view('frontend.contributor', compact('contributor'));
     }
     public function contact()
