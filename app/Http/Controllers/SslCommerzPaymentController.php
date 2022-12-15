@@ -2,24 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Illuminate\Http\Request;
-use App\Library\SslCommerz\SslCommerzNotification;
 use App\Models\File;
+use App\Models\Download;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Library\SslCommerz\SslCommerzNotification;
+use Carbon\Carbon;
 
 class SslCommerzPaymentController extends Controller
 {
-
-    public function exampleEasyCheckout()
-    {
-        return view('exampleEasycheckout');
-    }
-
-    public function exampleHostedCheckout()
-    {
-        return view('exampleHosted');
-    }
-
     public function index(Request $request)
     {
         # Here you have to receive all the order data to initate the payment.
@@ -32,8 +23,8 @@ class SslCommerzPaymentController extends Controller
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
         # CUSTOMER INFORMATION
-        $post_data['cus_name'] = 'Customer Name';
-        $post_data['cus_email'] = 'customer@mail.com';
+        $post_data['cus_name'] = auth()->user()->name;
+        $post_data['cus_email'] = auth()->user()->email;
         $post_data['cus_add1'] = 'Customer Address';
         $post_data['cus_add2'] = "";
         $post_data['cus_city'] = "";
@@ -59,7 +50,7 @@ class SslCommerzPaymentController extends Controller
         $post_data['product_profile'] = "physical-goods";
 
         # OPTIONAL PARAMETERS
-        $post_data['value_a'] = "ref001";
+        $post_data['value_a'] = $request->file_id;
         $post_data['value_b'] = "ref002";
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
@@ -162,6 +153,17 @@ class SslCommerzPaymentController extends Controller
 
     public function success(Request $request)
     {
+        if (!Download::where([
+            'user_id' => auth()->id(),
+            'file_id' => $request->input('value_a')
+        ])->exists()) {
+            Download::insert([
+                'user_id' => auth()->id(),
+                'contributor_id' => File::find($request->input('value_a'))->user_id,
+                'file_id' => $request->input('value_a'),
+                'created_at' => Carbon::now()
+            ]);
+        }
         echo "Transaction is Successful";
 
         $tran_id = $request->input('tran_id');
@@ -188,13 +190,15 @@ class SslCommerzPaymentController extends Controller
                     ->where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
 
-                echo "<br >Transaction is successfully Completed";
+                // echo "<br >Transaction is successfully Completed";
+                return view('success_page');
             }
         } else if ($order_detials->status == 'Processing' || $order_detials->status == 'Complete') {
             /*
              That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
              */
-            echo "Transaction is successfully Completed";
+            // echo "Transaction is successfully Completed";
+            return view('success_page');
         } else {
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";

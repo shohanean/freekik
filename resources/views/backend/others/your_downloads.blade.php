@@ -37,6 +37,7 @@
                             <tr class="fw-bolder text-muted bg-light">
                                 <th class="ps-4 rounded-start">Thumbnail</th>
                                 <th>Title</th>
+                                <th>Type</th>
                                 <th class="rounded-end">Download Time</th>
                             </tr>
                         </thead>
@@ -48,6 +49,13 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('item.details', $download->file->slug) }}" target="_blank">{{ $download->file->title }} <i class="fas fa-external-link-alt"></i></a>
+                                    </td>
+                                    <td>
+                                        @if ($download->file->file_type == 1)
+                                            <span class="text-primary">Free</span>
+                                        @else
+                                            Premium
+                                        @endif
                                     </td>
                                     <td>{{ $download->created_at->diffForHumans() }}</td>
                                 </tr>
