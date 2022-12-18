@@ -164,7 +164,7 @@ class SslCommerzPaymentController extends Controller
                 'created_at' => Carbon::now()
             ]);
         }
-        echo "Transaction is Successful";
+        echo "Transaction is Successful<br>";
 
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
@@ -176,7 +176,7 @@ class SslCommerzPaymentController extends Controller
         $order_detials = DB::table('orders')
             ->where('transaction_id', $tran_id)
             ->select('transaction_id', 'status', 'currency', 'amount')->first();
-
+        $slug_to_redirect = File::find($request->input('value_a'))->slug;
         if ($order_detials->status == 'Pending') {
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
 
@@ -191,14 +191,17 @@ class SslCommerzPaymentController extends Controller
                     ->update(['status' => 'Processing']);
 
                 // echo "<br >Transaction is successfully Completed";
-                return view('success_page');
+
+                // return redirect('your/downloads');
+                return redirect(route('item.details', $slug_to_redirect));
             }
         } else if ($order_detials->status == 'Processing' || $order_detials->status == 'Complete') {
             /*
              That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
              */
             // echo "Transaction is successfully Completed";
-            return view('success_page');
+            return redirect(route('item.details', $slug_to_redirect));
+
         } else {
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";

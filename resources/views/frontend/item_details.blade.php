@@ -161,10 +161,10 @@
                                     </div>
                                 </div>
                             </div>
+                            @if ($file->file_type == 1)
                             <p class="card-text">
                                 Click below button to start downloading
                             </p>
-                            @if ($file->file_type == 1)
                             <div class="download text-center">
                                 <form action="{{ route('download', $file->slug) }}" method="POST">
                                     @csrf
@@ -174,15 +174,33 @@
                                 </form>
                             </div>
                             @else
-                            <div class="text-center m-3">
-                                <form action="{{ url('pay') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="file_id" value="{{ $file->id }}">
-                                    <button class="btn border border-primary">
-                                        Pay with <img style="width:150px;height:auto;" src="https://securepay.sslcommerz.com/public/image/sslcommerz.png" />
-                                    </button>
-                                </form>
-                            </div>
+                                @if ($downloads->where('user_id', auth()->id())->count() == 1)
+                                    <p class="card-text">
+                                        You already purchased this file, you can download now
+                                    </p>
+                                    <div class="download text-center">
+                                        <form action="" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn bg-warning fw-semibold px-5 py-3 m-auto text-white">
+                                                <i class="fa fa-check-circle"></i>
+                                                <span class="fw-light">Premium Download</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                @else
+                                    <p class="card-text">
+                                        Please pay first to get access to this file
+                                    </p>
+                                    <div class="text-center m-3">
+                                        <form action="{{ url('pay') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="file_id" value="{{ $file->id }}">
+                                            <button class="btn border border-primary">
+                                                Pay with <img style="width:150px;height:auto;" src="https://securepay.sslcommerz.com/public/image/sslcommerz.png" />
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif
                             @endif
                             {{-- <hr>
                             <div class="row">
