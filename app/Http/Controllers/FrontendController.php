@@ -101,6 +101,22 @@ class FrontendController extends Controller
         );
         return redirect($temporaryUrl);
     }
+    public function premium_download($file_slug){
+        if(Download::where([
+            'user_id' => auth()->id(),
+            'file_id' => File::where('slug', $file_slug)->first()->id
+        ])->exists()){
+            // user paid for this file, so we will let download it.
+            $temporaryUrl = Storage::disk('s3')->temporaryUrl(
+                File::where('slug', $file_slug)->first()->main,
+                now()->addMinutes(5)
+            );
+            return redirect($temporaryUrl);
+        }else{
+            abort(404);
+        }
+
+    }
     public function contributor($user_slug)
     {
         $contributor = User::with(["file" => function ($q) {

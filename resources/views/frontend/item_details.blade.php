@@ -179,7 +179,7 @@
                                         You already purchased this file, you can download now
                                     </p>
                                     <div class="download text-center">
-                                        <form action="" method="POST">
+                                        <form action="{{ route('premium.download', $file->slug) }}" method="POST">
                                             @csrf
                                             <button type="submit" class="btn bg-warning fw-semibold px-5 py-3 m-auto text-white">
                                                 <i class="fa fa-check-circle"></i>
