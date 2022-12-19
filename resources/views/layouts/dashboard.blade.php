@@ -141,6 +141,7 @@
 										</span>
 										<span class="menu-title">
                                             Your Downloads
+                                            <span class="ms-5 badge bg-success">45</span>
                                         </span>
 									</a>
 								</div>

@@ -126,6 +126,6 @@ class FrontendController extends Controller
     }
     public function contact()
     {
-        return "contact";
+        return view('frontend.contact');
     }
 }
