@@ -6,6 +6,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 body {
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 
 * {
@@ -30,19 +31,19 @@ body {
 }
 
 .web-text-color {
-  color: #7531FA;
+  color: #EE3129;
 }
 
 .web-btn {
-  background-color: #2669ea;
+  background-color: #FAA61A;
 }
 
 .web-btn:hover {
-  background-color: #2669ea;
+  background-color: #FAA61A;
 }
 
 .web-bg {
-  background-color: #7531FA;
+  background-color: #EE3129;
 }
 
 .web-text-color:hover {
@@ -144,7 +145,9 @@ body {
   border: 2px solid #cfd9e0;
   padding: 1px 10px;
 }
-
+.position-fixed{
+    background: #FEEACA;
+}
 @media (max-width: 1159px) {
   .navbar-expand-lg .navbar-toggler {
     display: block !important;
@@ -323,19 +326,19 @@ body {
 }
 #inner .container .box, #inner .container .add_box {
   position: relative;
-  height: 200px;
+  height: 350px;
   box-shadow: 3px 3px 10px rgba(85, 85, 85, 0.5);
   border-radius: 8px;
   margin-bottom: 7%;
   transition: 1s;
 }
-#inner .container .box a:hover .box__title, #inner .container .add_box a:hover .box__title {
+/* #inner .container .box a:hover .box__title, #inner .container .add_box a:hover .box__title {
   height: 35%;
   transition: 1s;
 }
 #inner .container .box a:hover .box__title p, #inner .container .add_box a:hover .box__title p {
   opacity: 1;
-}
+} */
 #inner .container .box img, #inner .container .add_box img {
   width: 100%;
   height: 100%;
@@ -349,7 +352,6 @@ body {
   left: 0;
   width: 100%;
   height: 25%;
-  background-color: #F6F6F6;
   border-radius: 0 0 8px 8px;
   vertical-align: middle;
   transition: 0.5s;
@@ -367,9 +369,8 @@ body {
 }
 #inner .container .box .box__title h6, #inner .container .add_box .box__title h6 {
   text-align: center;
-  color: #bababa;
   text-transform: uppercase;
-  margin: 7% 0 0 0;
+  margin: 65px 0 0 0;
   font-size: 0.9em;
 }
 #inner .container .add_box {
