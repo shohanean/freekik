@@ -164,7 +164,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="row">
-                    @foreach ($files->slice(1,4) as $file)
+                    @forelse ($files->slice(1,4) as $file)
                         <div class="col-md-6 col-lg-6">
                             <figure class="position-relative gallery-overly">
                                 <img src="{{ Storage::disk('s3')->url($file->thumbnail) }}" class="img-fluid w-100" style="height: 215px;" alt="">
@@ -174,7 +174,11 @@
                                 </p>
                             </figure>
                         </div>
-                    @endforeach
+                    @empty
+                    <div class="alert alert-danger">
+                        Nothing to show
+                    </div>
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -218,7 +222,7 @@
     </div>
 </section>
 <!-- suggested_files start here -->
-{{-- @if ($suggested_files->count() > 0)
+@if ($suggested_files->count() > 0)
 <section id="gallery" class="mt-5">
     <div class="container">
         <div class="row mb-3">
@@ -243,7 +247,7 @@
         </div>
     </div>
 </section>
-@endif --}}
+@endif
 <!-- suggested_files end here -->
 {{-- <section id="choice" class="mt-5">
     <div class="container">
