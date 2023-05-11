@@ -43,9 +43,9 @@ class HomeController extends Controller
                 'users' => User::latest()->paginate(10),
                 'files' => File::where('user_id', auth()->id())->get(),
                 'trashed_files' => File::onlyTrashed()->where('user_id', auth()->id())->get(),
-                'downloads' => Download::where('contributor_id', auth()->id())->get(),
-                'todaysdownloads' => Download::where('contributor_id', auth()->id())->whereDate('created_at', Carbon::now())->get(),
-                'tops' => Download::where('contributor_id', auth()->id())->groupBy('file_id')->select('file_id', DB::raw('count(*) as total'))->orderBy('total', 'DESC')->take(3)->get(),
+                'downloads' => Download::where('user_id', auth()->id())->get(),
+                'todaysdownloads' => Download::where('user_id', auth()->id())->whereDate('created_at', Carbon::now())->get(),
+                'tops' => Download::where('user_id', auth()->id())->groupBy('file_id')->select('file_id', DB::raw('count(*) as total'))->orderBy('total', 'DESC')->take(3)->get(),
             ]);
         }
         return view('home',[

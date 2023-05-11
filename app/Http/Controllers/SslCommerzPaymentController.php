@@ -160,6 +160,7 @@ class SslCommerzPaymentController extends Controller
             Download::insert([
                 'user_id' => auth()->id(),
                 'contributor_id' => File::find($request->input('value_a'))->user_id,
+                'amount' => File::find($request->input('value_a'))->price,
                 'file_id' => $request->input('value_a'),
                 'created_at' => Carbon::now()
             ]);

@@ -14,6 +14,7 @@ use App\Http\Controllers\
         UserController,
         CategoryController,
         UploadController,
+        EarningsController,
     };
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +90,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('file/for/review/details/{id}', [UploadController::class, 'file_for_review_details'])->name('file.for.review.details');
     Route::patch('file/resubmit/{id}', [UploadController::class, 'file_resubmit'])->name('file.resubmit');
     Route::resource('upload', UploadController::class);
+    Route::resource('earnings', EarningsController::class);
 });
 
 // SSLCOMMERZ Start
