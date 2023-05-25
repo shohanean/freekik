@@ -91,6 +91,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('file/resubmit/{id}', [UploadController::class, 'file_resubmit'])->name('file.resubmit');
     Route::resource('upload', UploadController::class);
     Route::resource('earnings', EarningsController::class);
+    Route::get('download/earnings', [EarningsController::class, 'download'])->name('earnings.download');
 });
 
 // SSLCOMMERZ Start

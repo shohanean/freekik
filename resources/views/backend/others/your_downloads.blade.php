@@ -47,7 +47,8 @@
                                     <th>Title</th>
                                     <th>Type</th>
                                     <th>Amount</th>
-                                    <th class="rounded-end">Download Time</th>
+                                    <th>Download Time</th>
+                                    <th class="rounded-end">Invoice</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,6 +73,11 @@
                                         </td>
                                         <td>৳{{ $download->amount }}</td>
                                         <td>{{ $download->created_at->diffForHumans() }}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-secondary">
+                                                no<i class="fa fa-download"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr class="text-center text-danger">

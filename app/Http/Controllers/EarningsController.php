@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Download;
+use App\Models\Withdraw;
+use App\Exports\EarningsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class EarningsController extends Controller
 {
@@ -14,7 +19,13 @@ class EarningsController extends Controller
      */
     public function index()
     {
-        return "sssss";
+        $downloads = Download::where('contributor_id', auth()->id())->latest()->get();
+        return view('backend.earning.index', compact('downloads'));
+    }
+
+    public function download()
+    {
+        return Excel::download(new EarningsExport, auth()->user()->name.'.xlsx');
     }
 
     /**
@@ -24,7 +35,8 @@ class EarningsController extends Controller
      */
     public function create()
     {
-        //
+        $withdraws = Withdraw::where('user_id', auth()->id())->latest()->get();
+        return view('backend.earning.create', compact('withdraws'));
     }
 
     /**
@@ -35,7 +47,14 @@ class EarningsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Withdraw::insert([
+            'user_id' => auth()->id(),
+            'amount' => 96,
+            'withdraw_method' => $request->withdraw_method,
+            'withdraw_remarks' => $request->withdraw_remarks,
+            'created_at' => Carbon::now()
+        ]);
+        return back();
     }
 
     /**

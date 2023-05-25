@@ -65,8 +65,6 @@ active
                             <!--end::Input group-->
                         </div>
                     </div>
-
-
                     <!--begin::Input group-->
                     <div class="mb-4 fv-row fv-plugins-icon-container">
                         <label class="required form-label">Title</label>
